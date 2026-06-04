@@ -1,1 +1,1 @@
-# Bannerlord-GauntletUI-XSD
+# Bannerlord-Schemas
