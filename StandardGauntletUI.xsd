@@ -1,0 +1,47 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <xs:redefine schemaLocation="GauntletUI.xsd">
+        <xs:group name="AllWidgets">
+            <xs:choice>
+                <xs:group ref="BasicWidgets" />
+                <xs:group ref="StandardWidgets" />
+            </xs:choice>
+        </xs:group>
+    </xs:redefine>
+
+    <xs:group name="StandardWidgets">
+        <xs:choice>
+
+            <xs:element name="Standard.Background" type="Standard.Background" />
+            <xs:element name="Standard.DialogCloseButtons" type="Standard.DialogCloseButtons" />
+            <xs:element name="Standard.DropdownWithHorizontalControl" type="Standard.DropdownWithHorizontalControl" />
+            
+        </xs:choice>
+    </xs:group>
+    
+    <xs:complexType name="Standard.Background">
+        <xs:complexContent><xs:extension base="WidgetBase" /></xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="Standard.DialogCloseButtons">
+        <xs:complexContent>
+            <xs:extension base="WidgetBase">
+                <xs:attribute name="Parameter.CancelButtonAction" type="xs:string" />
+                <xs:attribute name="Parameter.DoneButtonAction" type="xs:string" />
+                <xs:attribute name="Parameter.CancelButtonText" type="xs:string" />
+                <xs:attribute name="Parameter.DoneButtonText" type="xs:string" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="Standard.DropdownWithHorizontalControl">
+        <xs:complexContent>
+            <xs:extension base="WidgetBase">
+                <xs:attribute name="Parameter.SelectorDataSource" type="xs:string" />
+                <xs:attribute name="Parameter.IsFlatDesign" type="xs:string" />
+                <xs:attribute name="Parameter.ShowNextAndPrevious" type="xs:string" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>
