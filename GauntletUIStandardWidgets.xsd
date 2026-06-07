@@ -1,0 +1,33 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <xs:include schemaLocation="GauntletUIWidgets.xsd" />
+    
+    <xs:element name="Standard.Background" type="StandardBackgroundType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardBackgroundType">
+        <xs:complexContent><xs:extension base="WidgetType" /></xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Standard.DialogCloseButtons" type="StandardDialogCloseButtonsType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardDialogCloseButtonsType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.CancelButtonAction" type="xs:string" />
+                <xs:attribute name="Parameter.DoneButtonAction" type="xs:string" />
+                <xs:attribute name="Parameter.CancelButtonText" type="xs:string" />
+                <xs:attribute name="Parameter.DoneButtonText" type="xs:string" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Standard.DropdownWithHorizontalControl" type="StandardDropdownWithHorizontalControlType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardDropdownWithHorizontalControlType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.SelectorDataSource" type="xs:string" />
+                <xs:attribute name="Parameter.IsFlatDesign" type="xs:string" />
+                <xs:attribute name="Parameter.ShowNextAndPrevious" type="xs:string" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

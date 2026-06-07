@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.w3.org/2001/Hello" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <xs:element name="Children">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="WidgetBase" minOccurs="0" maxOccurs="unbounded" />
+                <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ItemTemplate">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="WidgetBase" minOccurs="0" maxOccurs="1" />
+                <xs:any minOccurs="0" maxOccurs="1" processContents="lax" />
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="WidgetBase" abstract="true" />
+    
+    <xs:simpleType name="SizePolicyType">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="StretchToParent" />
+                    <xs:enumeration value="CoverChildren" />
+                    <xs:enumeration value="Fixed" />
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="xs:string" />
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:element name="Widget" type="WidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="WidgetType">
+        <xs:choice minOccurs="0" maxOccurs="1">
+            <xs:element ref="Children" />
+            <xs:element ref="ItemTemplate" />
+            <xs:element name="LogicalChildrenLocation" />
+        </xs:choice>
+
+        <xs:attribute name="DataSource" type="xs:string" />
+
+        <xs:attribute name="IsEnabled" type="xs:string" />
+        <xs:attribute name="IsDisabled" type="xs:string" />
+
+        <xs:attribute name="IsVisible" type="xs:string" />
+        <xs:attribute name="IsHidden" type="xs:string" />
+
+        <xs:attribute name="Id" type="xs:string" />
+
+        <xs:attribute name="WidthSizePolicy" type="SizePolicyType" />
+        <xs:attribute name="HeightSizePolicy" type="SizePolicyType" />
+
+        <xs:attribute name="MinWidth" type="xs:string" />
+        <xs:attribute name="SuggestedWidth" type="xs:string" />
+        <xs:attribute name="MaxWidth" type="xs:string" />
+        <xs:attribute name="MinHeight" type="xs:string" />
+        <xs:attribute name="SuggestedHeight" type="xs:string" />
+        <xs:attribute name="MaxHeight" type="xs:string" />
+
+        <xs:attribute name="HorizontalAlignment">
+            <xs:simpleType>
+                <xs:union>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="Left" />
+                            <xs:enumeration value="Center" />
+                            <xs:enumeration value="Right" />
+                        </xs:restriction>
+                    </xs:simpleType>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string" />
+                    </xs:simpleType>
+                </xs:union>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="VerticalAlignment">
+            <xs:simpleType>
+                <xs:union>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="Top" />
+                            <xs:enumeration value="Center" />
+                            <xs:enumeration value="Bottom" />
+                        </xs:restriction>
+                    </xs:simpleType>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string" />
+                    </xs:simpleType>
+                </xs:union>
+            </xs:simpleType>
+        </xs:attribute>
+
+        <xs:attribute name="MarginLeft" type="xs:string" />
+        <xs:attribute name="MarginRight" type="xs:string" />
+        <xs:attribute name="MarginTop" type="xs:string" />
+        <xs:attribute name="MarginBottom" type="xs:string" />
+
+        <xs:attribute name="Sprite" type="xs:string" default="BlankWhiteSquare_9" />
+        <xs:attribute name="Brush" type="xs:string" />
+        <xs:attribute name="Color" type="xs:string" />
+        <xs:attribute name="ColorFactor" type="xs:string" />
+        <xs:attribute name="AlphaFactor" type="xs:string" />
+        <xs:attribute name="ValueFactor" type="xs:string" />
+        <xs:attribute name="SaturationFactor" type="xs:string" />
+
+        <xs:attribute name="PositionXOffset" type="xs:string" />
+        <xs:attribute name="PositionYOffset" type="xs:string" />
+
+        <xs:attribute name="ClipContents" type="xs:string" />
+        <xs:attribute name="DoNotPassEventsToChildren" type="xs:string" />
+        <xs:attribute name="DoNotAcceptEvents" type="xs:string" />
+        <xs:attribute name="HorizontalFlip" type="xs:string" />
+
+        <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+
+    <xs:element name="BrushWidget" type="BrushWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="BrushWidgetType">
+        <xs:complexContent><xs:extension base="WidgetType" /></xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ImageWidget" type="ImageWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ImageWidgetType">
+        <xs:complexContent><xs:extension base="WidgetType" /></xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="TextWidget" type="TextWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="TextWidgetType">
+        <xs:complexContent><xs:extension base="WidgetType">
+            <xs:attribute name="FloatText" type="xs:string" />
+            <xs:attribute name="IntText" type="xs:string" />
+            <xs:attribute name="Text" type="xs:string" />
+            <xs:attribute name="Brush.FontSize" type="xs:string" />
+            <xs:attribute name="Brush.FontColor" type="xs:string" default="#FFFFFFFF" />
+            <xs:attribute name="Brush.TextAlphaFactor" type="xs:string" default="#FFFFFFFF" />
+            <xs:attribute name="Brush.TextHorizontalAlignment" type="xs:string">
+                <xs:simpleType>
+                    <xs:union>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="Left" />
+                                <xs:enumeration value="Center" />
+                                <xs:enumeration value="Right" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string" />
+                        </xs:simpleType>
+                    </xs:union>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:extension></xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="EditableTextWidget" type="EditableTextWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="EditableTextWidgetType">
+        <xs:complexContent>
+            <xs:extension base="TextWidgetType">
+                <xs:attribute name="RealText" type="xs:string" />
+                <xs:attribute name="DefaultSearchText" type="xs:string" />
+                <xs:attribute name="Command.FocusGained" type="xs:string" />
+                <xs:attribute name="Command.FocusLost" type="xs:string" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ButtonWidget" type="ButtonWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ButtonWidgetType">
+        <xs:complexContent><xs:extension base="WidgetType">
+            <xs:attribute name="Command.Click" type="xs:string" />
+        </xs:extension></xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="HintWidget" type="HintWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="HintWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Command.HoverBegin" type="xs:string" default="ExecuteBeginHint" />
+                <xs:attribute name="Command.HoverEnd" type="xs:string" default="ExecuteEndHint" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="SliderWidget" type="SliderWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="SliderWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="MaxValueInt" type="xs:string" />
+                <xs:attribute name="MinValueInt" type="xs:string" />
+                <xs:attribute name="ValueInt" type="xs:string" />
+                <xs:attribute name="Handle" type="xs:string" />
+                <xs:attribute name="Filler" type="xs:string" />
+                <xs:attribute name="IsDiscrete" type="xs:string" />
+                <xs:attribute name="DoNotUpdateHandleSize" type="xs:string" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ListPanel" type="ListPanelType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ListPanelType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="StackLayout.LayoutMethod">
+                    <xs:simpleType>
+                        <xs:union>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="HorizontalLeftToRight" />
+                                    <xs:enumeration value="HorizontalRightToLeft" />
+                                    <xs:enumeration value="VerticalTopToBottom" />
+                                    <xs:enumeration value="VerticalBottomToTop" />
+                                </xs:restriction>
+                            </xs:simpleType>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string" />
+                            </xs:simpleType>
+                        </xs:union>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="GridWidget" type="GridWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="GridWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="ColumnCount" type="xs:string" />
+                <xs:attribute name="DefaultCellWidth" type="xs:string" />
+                <xs:attribute name="DefaultCellHeight" type="xs:string" />
+                <xs:attribute name="LayoutImp" type="xs:string" default="GridLayout" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ScrollablePanel" type="ScrollablePanelType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ScrollablePanelType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="AutoHideScrollBars" type="xs:string" />
+                <xs:attribute name="ClipRect" type="xs:string" />
+                <xs:attribute name="InnerPanel" type="xs:string" />
+                <xs:attribute name="VerticalScrollbar" type="xs:string" />
+                <xs:attribute name="HorizontalScrollbar" type="xs:string" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ScrollbarWidget" type="ScrollbarWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ScrollbarWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Handle" type="xs:string" />
+                <xs:attribute name="AlignmentAxis" type="xs:string" />
+                <xs:attribute name="MaxValue" type="xs:string" />
+                <xs:attribute name="MinValue" type="xs:string" />
+                <xs:attribute name="ValueFloat" type="xs:string" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="FillBarWidget" type="FillBarWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="FillBarWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="FillWidget" type="xs:string" />
+                <xs:attribute name="InitialAmount" type="xs:string" />
+                <xs:attribute name="MaxAmount" type="xs:string" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="FillBarVerticalWidget" type="FillBarVerticalWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="FillBarVerticalWidgetType">
+        <xs:complexContent>
+            <xs:extension base="FillBarWidgetType">
+                <xs:attribute name="IsDirectionUpward" type="xs:string" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ImageIdentifierWidget" type="ImageIdentifierWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ImageIdentifierWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="ImageId" type="xs:string" default="@Id" />
+                <xs:attribute name="AdditionalArgs" type="xs:string" default="@AdditionalArgs" />
+                <xs:attribute name="TextureProviderName" type="xs:string" default="@TextureProviderName" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="CharacterTableauWidget" type="CharacterTableauWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="CharacterTableauWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="BannerCodeText" type="xs:string" />
+                <xs:attribute name="BodyProperties" type="xs:string" />
+                <xs:attribute name="CharStringId" type="xs:string" />
+                <xs:attribute name="EquipmentCode" type="xs:string" />
+                <xs:attribute name="IsFemale" type="xs:string" />
+                <xs:attribute name="MountCreationKey" type="xs:string" />
+                <xs:attribute name="StanceIndex" type="xs:string" />
+                <xs:attribute name="ArmorColor1" type="xs:string" />
+                <xs:attribute name="ArmorColor2" type="xs:string" />
+                <xs:attribute name="Race" type="xs:string" />
+                <xs:attribute name="DoNotUseCustomScale" type="xs:string" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>
