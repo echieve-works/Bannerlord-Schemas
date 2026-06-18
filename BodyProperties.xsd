@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:include schemaLocation="Bannerlord-Schemas-BodyPropertyTypes.xsd" />
+    
+    <xs:element name="BodyProperties">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="BodyProperty" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element name="BodyPropertiesMin" minOccurs="0" maxOccurs="1" type="BodyPropertyType" />
+                            <xs:element name="BodyPropertiesMax" minOccurs="0" maxOccurs="1" type="BodyPropertyType" />
+                            <xs:element name="hair_tags" minOccurs="0" maxOccurs="1" type="HairTagsType" />
+                            <xs:element name="beard_tags" minOccurs="0" maxOccurs="1" type="BeardTagsType" />
+                            <xs:element name="tattoo_tags" minOccurs="0" maxOccurs="1" type="TattooTagsType" />
+                        </xs:choice>
+                        <xs:attribute name="id" type="xs:string" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:complexType name="BodyPropertyType">
+        <xs:attribute name="version" type="xs:int" default="4" />
+        <xs:attribute name="age" type="xs:float" />
+        <xs:attribute name="weight" type="xs:float" />
+        <xs:attribute name="build" type="xs:float" />
+        <xs:attribute name="key">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="[a-zA-Z0-9]{128}" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="HairTagsType">
+        <xs:choice>
+            <xs:element name="hair_tag" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute name="name">
+                        <xs:simpleType>
+                            <xs:union memberTypes="xs:string">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="empire" />
+                                        <xs:enumeration value="sturgia" />
+                                        <xs:enumeration value="vlandia" />
+                                        <xs:enumeration value="aserai" />
+                                        <xs:enumeration value="battania" />
+                                        <xs:enumeration value="khuzait" />
+                                        <xs:enumeration value="Ponytail" />
+                                        <xs:enumeration value="HighPonytail" />
+                                        <xs:enumeration value="LongOvershoulder" />
+                                        <xs:enumeration value="TiedLongOverShoulder" />
+                                        <xs:enumeration value="AboveShoulderLength" />
+                                        <xs:enumeration value="RestingOnShoulders" />
+                                        <xs:enumeration value="TiedInBack" />
+                                        <xs:enumeration value="BraidedInBack" />
+                                        <xs:enumeration value="ShoulderLengthTied" />
+                                        <xs:enumeration value="BraidedAboveEars" />
+                                        <xs:enumeration value="Ukrainian" />
+                                        <xs:enumeration value="Bobbed" />
+                                        <xs:enumeration value="LongAndBushy" />
+                                        <xs:enumeration value="TiedAcrossBack" />
+                                        <xs:enumeration value="BraidedAndLong" />
+                                        <xs:enumeration value="SlickedShort" />
+                                        <xs:enumeration value="SlickedLong" />
+                                        <xs:enumeration value="PartedAndCombedBack" />
+                                        <xs:enumeration value="Tousled" />
+                                        <xs:enumeration value="Short" />
+                                        <xs:enumeration value="ShortWavy" />
+                                        <xs:enumeration value="ShortAndThin" />
+                                        <xs:enumeration value="Cornrows" />
+                                        <xs:enumeration value="CornrowMohawk" />
+                                        <xs:enumeration value="Bowl" />
+                                        <xs:enumeration value="PageBoy" />
+                                        <xs:enumeration value="Mohawk" />
+                                        <xs:enumeration value="Native Braids" />
+                                        <xs:enumeration value="Mongol Hair" />
+                                        <xs:enumeration value="Monk Hair" />
+                                        <xs:enumeration value="Viking Hair" />
+                                        <xs:enumeration value="Afro Hair" />
+                                        <xs:enumeration value="Afro Hair 1" />
+                                        <xs:enumeration value="Afro Hair 2" />
+                                        <xs:enumeration value="Afro Hair 3" />
+                                        <xs:enumeration value="Afro Hair 4" />
+                                        <xs:enumeration value="Afro Hair 5" />
+                                        <xs:enumeration value="Bandit Hair 1" />
+                                        <xs:enumeration value="Bandit Hair 2" />
+                                        <xs:enumeration value="Bandit Hair 3" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:union>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="BeardTagsType">
+        <xs:choice>
+            <xs:element name="beard_tag" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute name="name">
+                        <xs:simpleType>
+                            <xs:union memberTypes="xs:string">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="empire" />
+                                        <xs:enumeration value="sturgia" />
+                                        <xs:enumeration value="vlandia" />
+                                        <xs:enumeration value="aserai" />
+                                        <xs:enumeration value="battania" />
+                                        <xs:enumeration value="khuzait" />
+                                        <xs:enumeration value="ThinMustache" />
+                                        <xs:enumeration value="MediumMustache" />
+                                        <xs:enumeration value="WaxedMustache" />
+                                        <xs:enumeration value="DroopyMustache" />
+                                        <xs:enumeration value="ChevronMustache" />
+                                        <xs:enumeration value="WalrusMustache" />
+                                        <xs:enumeration value="LampshedeMustache" />
+                                        <xs:enumeration value="MustacheAndPatch" />
+                                        <xs:enumeration value="ThinMustacheWithGoatee" />
+                                        <xs:enumeration value="TrimmedDutch" />
+                                        <xs:enumeration value="DutchTiedBeard" />
+                                        <xs:enumeration value="MediumDutch" />
+                                        <xs:enumeration value="Cleanshaven" />
+                                        <xs:enumeration value="Sideburns" />
+                                        <xs:enumeration value="Stubble" />
+                                        <xs:enumeration value="Stubble 1" />
+                                        <xs:enumeration value="Stubble 2" />
+                                        <xs:enumeration value="LightGoatee" />
+                                        <xs:enumeration value="ChinGoatee" />
+                                        <xs:enumeration value="FrenchForkBeardBalbo" />
+                                        <xs:enumeration value="TiedBeardShavenCheeks" />
+                                        <xs:enumeration value="WaxedBeardWithShavedCheeks" />
+                                        <xs:enumeration value="BeardWithShavedCheeks" />
+                                        <xs:enumeration value="DroopingMustacheAndBeard" />
+                                        <xs:enumeration value="BraidedAndFullBeard" />
+                                        <xs:enumeration value="CircleBeard" />
+                                        <xs:enumeration value="LightShortBeard" />
+                                        <xs:enumeration value="GaribaldiBeard" />
+                                        <xs:enumeration value="GaribaldiBeardWide" />
+                                        <xs:enumeration value="HeavyShortBeard" />
+                                        <xs:enumeration value="VanDykeBeard" />
+                                        <xs:enumeration value="LongBeard" />
+                                        <xs:enumeration value="HeavyLongBeard" />
+                                        <xs:enumeration value="PointedShortBeard" />
+                                        <xs:enumeration value="LongScragglyBeard" />
+                                        <xs:enumeration value="BushyBandholz" />
+                                        <xs:enumeration value="BushyBandholzLong" />
+                                        <xs:enumeration value="BushyBandholzWide" />
+                                        <xs:enumeration value="BushyFullBeard" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:union>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="TattooTagsType">
+        <xs:choice>
+            <xs:element name="tattoo_tag" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute name="name">
+                        <xs:simpleType>
+                            <xs:union memberTypes="xs:string">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="Cleanface" />
+                                        <xs:enumeration value="Scar1~17" />
+                                        <xs:enumeration value="Eastern1~19" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:union>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+    
+</xs:schema>

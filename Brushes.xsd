@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="Brushes">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="Brush" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="Layers" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:choice>
+                                        <xs:element name="BrushLayer" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:attribute name="Name" type="xs:string" use="required" />
+                                                <xs:anyAttribute processContents="lax" />
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Styles" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:choice>
+                                        <xs:element name="Style" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:choice>
+                                                    <xs:element name="BrushLayer" minOccurs="0" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="Name" type="xs:string" use="required" />
+                                                            <xs:anyAttribute processContents="lax" />
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:choice>
+                                                <xs:attribute name="Name" type="xs:string" use="required" />
+                                                <xs:anyAttribute processContents="lax" />
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                        <xs:attribute name="Name" type="xs:string" use="required" />
+                        <xs:anyAttribute processContents="lax" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>

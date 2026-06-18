@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:include schemaLocation="Bannerlord-Schemas-BodyPropertyTypes.xsd" />
+    
+    <xs:simpleType name="ItemType">
+        <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Item." />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+    
+    <xs:simpleType name="EquipmentSlotType">
+        <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Item0" />
+                    <xs:enumeration value="Item1" />
+                    <xs:enumeration value="Item2" />
+                    <xs:enumeration value="Item3" />
+                    <xs:enumeration value="Head" />
+                    <xs:enumeration value="Cape" />
+                    <xs:enumeration value="Body" />
+                    <xs:enumeration value="Gloves" />
+                    <xs:enumeration value="Leg" />
+                    <xs:enumeration value="Horse" />
+                    <xs:enumeration value="HorseHarness" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+    
+    <xs:element name="NPCCharacters">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="NPCCharacter" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element name="face" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                                        <xs:element name="face_key_template" minOccurs="0" maxOccurs="1">
+                                            <xs:complexType>
+                                                <xs:attribute name="value" use="required">
+                                                    <xs:simpleType>
+                                                        <xs:union memberTypes="xs:string">
+                                                            <xs:simpleType>
+                                                                <xs:restriction base="xs:string">
+                                                                    <xs:enumeration value="BodyProperty." />
+                                                                </xs:restriction>
+                                                            </xs:simpleType>
+                                                        </xs:union>
+                                                    </xs:simpleType>
+                                                </xs:attribute>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="BodyProperties" minOccurs="0" maxOccurs="1" type="BodyPropertyType" />
+                                        <xs:element name="BodyPropertiesMax" minOccurs="0" maxOccurs="1" type="BodyPropertyType" />
+                                        <xs:element name="hair_tags" minOccurs="0" maxOccurs="1" type="HairTagsType" />
+                                        <xs:element name="beard_tags" minOccurs="0" maxOccurs="1" type="BeardTagsType" />
+                                        <xs:element name="tattoo_tags" minOccurs="0" maxOccurs="1" type="TattooTagsType" />
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="skills" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:choice>
+                                        <xs:element name="skill" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:attribute name="id">
+                                                    <xs:simpleType>
+                                                        <xs:union memberTypes="xs:string">
+                                                            <xs:simpleType>
+                                                                <xs:restriction base="xs:string">
+                                                                    <xs:enumeration value="OneHanded" />
+                                                                    <xs:enumeration value="TwoHanded" />
+                                                                    <xs:enumeration value="Polearm" />
+                                                                    <xs:enumeration value="Bow" />
+                                                                    <xs:enumeration value="Crossbow" />
+                                                                    <xs:enumeration value="Throwing" />
+                                                                    <xs:enumeration value="Riding" />
+                                                                    <xs:enumeration value="Athletics" />
+                                                                    <xs:enumeration value="Crafting" />
+                                                                    <xs:enumeration value="Tactics" />
+                                                                    <xs:enumeration value="Scouting" />
+                                                                    <xs:enumeration value="Roguery" />
+                                                                    <xs:enumeration value="Leadership" />
+                                                                    <xs:enumeration value="Charm" />
+                                                                    <xs:enumeration value="Trade" />
+                                                                    <xs:enumeration value="Steward" />
+                                                                    <xs:enumeration value="Medicine" />
+                                                                    <xs:enumeration value="Engineering" />
+                                                                </xs:restriction>
+                                                            </xs:simpleType>
+                                                        </xs:union>
+                                                    </xs:simpleType>
+                                                </xs:attribute>
+                                                <xs:attribute name="value" type="xs:int" />
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Traits" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:choice>
+                                        <xs:element name="Trait" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:attribute name="id">
+                                                    <xs:simpleType>
+                                                        <xs:union memberTypes="xs:string">
+                                                            <xs:simpleType>
+                                                                <xs:restriction base="xs:string">
+                                                                    <xs:enumeration value="BalancedFightingSkills" />
+                                                                    <xs:enumeration value="HopliteFightingSkills" />
+                                                                    <xs:enumeration value="KnightFightingSkills" />
+                                                                    <xs:enumeration value="CavalryFightingSkills" />
+                                                                    <xs:enumeration value="ArcherFightingSkills" />
+                                                                    <xs:enumeration value="HorseArcherFightingSkills" />
+                                                                    <xs:enumeration value="PeltastFightingSkills" />
+                                                                    <xs:enumeration value="Commander" />
+                                                                    <xs:enumeration value="Manager" />
+                                                                    <xs:enumeration value="Politician" />
+                                                                    <xs:enumeration value="Valor" />
+                                                                    <xs:enumeration value="Honor" />
+                                                                    <xs:enumeration value="Mercy" />
+                                                                    <xs:enumeration value="Generosity" />
+                                                                    <xs:enumeration value="Oligarchic" />
+                                                                    <xs:enumeration value="Calculating" />
+                                                                    <xs:enumeration value="Smuggler" />
+                                                                    <xs:enumeration value="Thug" />
+                                                                </xs:restriction>
+                                                            </xs:simpleType>
+                                                        </xs:union>
+                                                    </xs:simpleType>
+                                                </xs:attribute>
+                                                <xs:attribute name="value" type="xs:int" />
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="feats" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:choice>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="upgrade_targets" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:choice>
+                                        <xs:element name="upgrade_target" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:attribute name="id">
+                                                    <xs:simpleType>
+                                                        <xs:union memberTypes="xs:string">
+                                                            <xs:simpleType>
+                                                                <xs:restriction base="xs:string">
+                                                                    <xs:enumeration value="NPCCharacter." />
+                                                                </xs:restriction>
+                                                            </xs:simpleType>
+                                                        </xs:union>
+                                                    </xs:simpleType>
+                                                </xs:attribute>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Equipments" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                                        <xs:element name="EquipmentRoster" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:choice>
+                                                    <xs:element name="equipment" minOccurs="0" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="id" type="ItemType" use="required" />
+                                                            <xs:attribute name="slot" type="EquipmentSlotType" use="required" />
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:choice>
+                                                <xs:attribute name="civilian" type="xs:boolean" />
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="EquipmentSet" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:attribute name="id" type="xs:string" use="required" />
+                                                <xs:attribute name="civilian" type="xs:boolean" />
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="equipment" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:attribute name="id" type="ItemType" use="required" />
+                                                <xs:attribute name="slot" type="EquipmentSlotType" use="required" />
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="Resistances" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:attribute name="dismount" type="xs:int" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                        
+                        <xs:attribute name="id" type="xs:string" />
+                        <xs:attribute name="is_hidden_encyclopedia" type="xs:boolean" />
+                        <xs:attribute name="is_template" type="xs:boolean" />
+                        <xs:attribute name="is_obsolete" type="xs:boolean" />
+                        <xs:attribute name="is_female" type="xs:boolean" />
+                        <xs:attribute name="is_hero" type="xs:boolean" />
+                        <xs:attribute name="formation_position_preference">
+                            <xs:simpleType>
+                                <xs:union memberTypes="xs:string">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="Front" />
+                                            <xs:enumeration value="Back" />
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:union>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="default_group">
+                            <xs:simpleType>
+                                <xs:union memberTypes="xs:string">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="Infantry" />
+                                            <xs:enumeration value="Ranged" />
+                                            <xs:enumeration value="Cavalry" />
+                                            <xs:enumeration value="HorseArcher" />
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:union>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="level" type="xs:int" />
+                        <xs:attribute name="name" type="xs:string" />
+                        <xs:attribute name="age" type="xs:float" />
+                        <xs:attribute name="voice">
+                            <xs:simpleType>
+                                <xs:union memberTypes="xs:string">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="earnest" />
+                                            <xs:enumeration value="softspoken" />
+                                            <xs:enumeration value="curt" />
+                                            <xs:enumeration value="ironic" />
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:union>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="banner_symbol_mesh_name" type="xs:string" />
+                        <xs:attribute name="banner_symbol_color" type="xs:string" />
+                        <xs:attribute name="face_mesh_cache" type="xs:boolean" />
+                        <xs:attribute name="occupation">
+                            <xs:simpleType>
+                                <xs:union memberTypes="xs:string">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="Lord" />
+                                            <xs:enumeration value="Wanderer" />
+                                            <xs:enumeration value="Artisan" />
+                                            <xs:enumeration value="GangLeader" />
+                                            <xs:enumeration value="Gangster" />
+                                            <xs:enumeration value="RuralNotable" />
+                                            <xs:enumeration value="Headman" />
+                                            <xs:enumeration value="Merchant" />
+                                            <xs:enumeration value="Preacher" />
+                                            <xs:enumeration value="Soldier" />
+                                            <xs:enumeration value="Mercenary" />
+                                            <xs:enumeration value="Townsfolk" />
+                                            <xs:enumeration value="Special" />
+                                            <xs:enumeration value="GoodsTrader" />
+                                            <xs:enumeration value="PrisonGuard" />
+                                            <xs:enumeration value="Blacksmith" />
+                                            <xs:enumeration value="Weaponsmith" />
+                                            <xs:enumeration value="RansomBroker" />
+                                            <xs:enumeration value="ShopWorker" />
+                                            <xs:enumeration value="Tavernkeeper" />
+                                            <xs:enumeration value="TavernGameHost" />
+                                            <xs:enumeration value="TavernWench" />
+                                            <xs:enumeration value="Musician" />
+                                            <xs:enumeration value="Armorer" />
+                                            <xs:enumeration value="HorseTrader" />
+                                            <xs:enumeration value="ArenaMaster" />
+                                            <xs:enumeration value="Villager" />
+                                            <xs:enumeration value="CaravanGuard" />
+                                            <xs:enumeration value="NotAssigned" />
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:union>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="culture">
+                            <xs:simpleType>
+                                <xs:union memberTypes="xs:string">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="Culture.empire" />
+                                            <xs:enumeration value="Culture.battania" />
+                                            <xs:enumeration value="Culture.vlandia" />
+                                            <xs:enumeration value="Culture.sturgia" />
+                                            <xs:enumeration value="Culture.aserai" />
+                                            <xs:enumeration value="Culture.khuzait" />
+                                            <xs:enumeration value="Culture.nord" />
+                                            <xs:enumeration value="Culture.vakken" />
+                                            <xs:enumeration value="Culture.darshi" />
+                                            <xs:enumeration value="Culture.neutral_culture" />
+                                            <xs:enumeration value="Culture.forest_bandits" />
+                                            <xs:enumeration value="Culture.sea_raiders" />
+                                            <xs:enumeration value="Culture.mountain_bandits" />
+                                            <xs:enumeration value="Culture.desert_bandits" />
+                                            <xs:enumeration value="Culture.steppe_bandits" />
+                                            <xs:enumeration value="Culture.looters" />
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:union>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="skill_template">
+                            <xs:simpleType>
+                                <xs:union memberTypes="xs:string">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="SkillSet." />
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:union>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
