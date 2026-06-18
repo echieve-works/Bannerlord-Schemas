@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <xs:include schemaLocation="WidgetCore.xsd" />
+    
+    <xs:element name="Standard.Background" type="StandardBackgroundType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardBackgroundType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.IsParticleVisible" type="BooleanType" default="true" />
+                <xs:attribute name="Parameter.IsSmokeVisible" type="BooleanType" default="true" />
+                <xs:attribute name="Parameter.IsAnimEnabled" type="BooleanType" default="true" />
+                <xs:attribute name="Parameter.IsFullscreenImageEnabled" type="BooleanType" default="true" />
+                <xs:attribute name="Parameter.SmokeColorFactor" type="FloatType" default="1.1" />
+                <xs:attribute name="Parameter.ParticleOpacity" type="FloatType" default="0.8" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="Standard.BottomBigCloseButton" type="StandardBottomBigCloseButtonType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardBottomBigCloseButtonType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.DoneButtonText" type="StringType" default="- Missing -" />
+                <xs:attribute name="Parameter.DoneButtonAction" type="CommandType" />
+                <xs:attribute name="Parameter.DoneButtonDisabled" type="BooleanType" default="false" />
+                <xs:attribute name="Parameter.DoneButtonEnabled" type="BooleanType" default="false" />
+                <xs:attribute name="Parameter.DoneButtonHoverBegin" type="CommandType" />
+                <xs:attribute name="Parameter.DoneButtonHoverEnd" type="CommandType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="Standard.Button" type="StandardButtonType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardButtonType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.Text" type="StringType" />
+                <xs:attribute name="Parameter.HintEnabled" type="BooleanType" default="false" />
+                <xs:attribute name="Parameter.HintDataSource" type="DataSourceType" />
+                <xs:attribute name="Parameter.OnClick" type="CommandType" default="ExecuteAction" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="Standard.DialogCloseButtons" type="StandardDialogCloseButtonsType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardDialogCloseButtonsType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.ShowCancel" type="BooleanType" default="true" />
+                <xs:attribute name="Parameter.ShowDone" type="BooleanType" default="true" />
+                <xs:attribute name="Parameter.CancelButtonAction" type="CommandType" />
+                <xs:attribute name="Parameter.DoneButtonAction" type="CommandType" />
+                <xs:attribute name="Parameter.CancelButtonText" type="StringType" default="- Missing -" />
+                <xs:attribute name="Parameter.DoneButtonText" type="StringType" default="- Missing -" />
+                <xs:attribute name="Parameter.NavigationScopeMovements" type="StringType" default="Horizontal" />
+                <xs:attribute name="Parameter.CancelButtonNavigationIndex" type="IntType" default="-1" />
+                <xs:attribute name="Parameter.DoneButtonNavigationIndex" type="IntType" default="-1" />
+                <xs:attribute name="Parameter.CancelInputKeyDataSource" type="DataSourceType" />
+                <xs:attribute name="Parameter.DoneInputKeyDataSource" type="DataSourceType" />
+                <xs:attribute name="Parameter.IsDoneEnabled" type="BooleanType" default="true" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Standard.CircleLoadingWidget" type="StandardCircleLoadingWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardCircleLoadingWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.Radius" type="FloatType" default="16" />
+                <xs:attribute name="Parameter.Period" type="FloatType" default="0.75" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="Standard.DropdownWithHorizontalControl" type="StandardDropdownWithHorizontalControlType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardDropdownWithHorizontalControlType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.SelectorDataSource" type="DataSourceType" default="SelectorDataSource" />
+                <xs:attribute name="Parameter.ShowNextAndPrevious" type="BooleanType" default="true" />
+                <xs:attribute name="Parameter.IsFlatDesign" type="BooleanType" default="false" />
+                <xs:attribute name="Parameter.IsCustomWidth" type="BooleanType" default="false" />
+                <xs:attribute name="Parameter.CustomWidth" type="FloatType" default="0" />
+                <xs:attribute name="Parameter.IsEnabled" type="BooleanType" default="true" />
+                <xs:attribute name="Parameter.HintDataSource" type="DataSourceType" />
+                <xs:attribute name="Parameter.OnDropdownClick" type="CommandType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Standard.PopupBackButton" type="StandardPopupBackButtonType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardPopupBackButtonType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.ButtonText" type="StringType" default="- Missing -" />
+                <xs:attribute name="Parameter.ButtonAction" type="CommandType" />
+                <xs:attribute name="Parameter.IsEnabled" type="BooleanType" default="true" />
+                <xs:attribute name="Parameter.InputKeyDataSource" type="DataSourceType" />
+                <xs:attribute name="Parameter.DisabledHintDataSource" type="DataSourceType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Standard.PopupCloseButton" type="StandardPopupCloseButtonType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardPopupCloseButtonType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.ButtonText" type="StringType" default="- Missing -" />
+                <xs:attribute name="Parameter.ButtonAction" type="CommandType" />
+                <xs:attribute name="Parameter.IsEnabled" type="BooleanType" default="true" />
+                <xs:attribute name="Parameter.InputKeyDataSource" type="DataSourceType" />
+                <xs:attribute name="Parameter.DisabledHintDataSource" type="DataSourceType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Standard.ScrollablePanel" type="StandardScrollablePanelType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardScrollablePanelType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.OverlayShadowBrush" type="StringType" default="InnerFrameShadow1Brush" />
+                <xs:attribute name="Parameter.ScrollbarVisible" type="BooleanType" default="true" />
+                <xs:attribute name="Parameter.ScrollbarValueInt" type="IntType" default="0" />
+                <xs:attribute name="Parameter.InnerPanelVerticalAlignment" type="VerticalAlignmentType" default="Top" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Standard.Slider" type="StandardSliderType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardSliderType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.ValueInt" type="IntType" default="1" />
+                <xs:attribute name="Parameter.MinValue" type="IntType" default="1" />
+                <xs:attribute name="Parameter.MaxValue" type="IntType" default="100" />
+                <xs:attribute name="Parameter.IsDiscrete" type="BooleanType" default="true" />
+                <xs:attribute name="Parameter.InnerCanvasSprite" type="StringType" default="General\Slider\slider_inner_canvas" />
+                <xs:attribute name="Parameter.FillSprite" type="StringType" default="General\Slider\slider_fill" />
+                <xs:attribute name="Parameter.HandleBrush" type="StringType" default="SliderHandle" />
+                <xs:attribute name="Parameter.FrameBrush" type="StringType" default="Slider" />
+                <xs:attribute name="Parameter.IsHandleVisible" type="BooleanType" default="true" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Standard.Slider.Float" type="StandardSliderFloatType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardSliderFloatType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.ValueInt" type="FloatType" default="1" />
+                <xs:attribute name="Parameter.MinValue" type="FloatType" default="1" />
+                <xs:attribute name="Parameter.MaxValue" type="FloatType" default="100" />
+                <xs:attribute name="Parameter.InnerCanvasSprite" type="StringType" default="General\Slider\slider_inner_canvas" />
+                <xs:attribute name="Parameter.FillSprite" type="StringType" default="General\Slider\slider_fill" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Standard.TopPanel" type="StandardTopPanelType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardTopPanelType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.Title" type="StringType" default="--NO TITLE--" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="Standard.TripleDialogCloseButtons" type="StandardTripleDialogCloseButtonsType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardTripleDialogCloseButtonsType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.CancelButtonText" type="StringType" default="- Missing -" />
+                <xs:attribute name="Parameter.DoneButtonText" type="StringType" default="- Missing -" />
+                <xs:attribute name="Parameter.CancelButtonAction" type="CommandType" />
+                <xs:attribute name="Parameter.ResetButtonAction" type="CommandType" />
+                <xs:attribute name="Parameter.DoneButtonAction" type="CommandType" />
+                <xs:attribute name="Parameter.DoneButtonDisabled" type="BooleanType" default="false" />
+                <xs:attribute name="Parameter.CancelButtonDisabled" type="BooleanType" default="false" />
+                <xs:attribute name="Parameter.ResetButtonHintDataSource" type="DataSourceType" />
+                <xs:attribute name="Parameter.DoneButtonHintDataSource" type="DataSourceType" />
+                <xs:attribute name="Parameter.DoneButtonHoverBegin" type="CommandType" />
+                <xs:attribute name="Parameter.DoneButtonHoverEnd" type="CommandType" />
+                <xs:attribute name="Parameter.ResetInputKeyDataSource" type="DataSourceType" />
+                <xs:attribute name="Parameter.CancelInputKeyDataSource" type="DataSourceType" />
+                <xs:attribute name="Parameter.DoneInputKeyDataSource" type="DataSourceType" />
+                <xs:attribute name="Parameter.HideCancelInputKey" type="BooleanType" default="false" />
+                <xs:attribute name="Parameter.CancelSoundEvent" type="CommandType" />
+                <xs:attribute name="Parameter.ConfirmSoundEvent" type="CommandType" />
+                <xs:attribute name="Parameter.ResetSoundEvent" type="CommandType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Standard.TriplePopupCloseButtons" type="StandardTriplePopupCloseButtonsType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardTriplePopupCloseButtonsType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.CancelButtonText" type="StringType" default="- Missing -" />
+                <xs:attribute name="Parameter.DoneButtonText" type="StringType" default="- Missing -" />
+                <xs:attribute name="Parameter.CancelButtonAction" type="CommandType" />
+                <xs:attribute name="Parameter.ResetButtonAction" type="CommandType" />
+                <xs:attribute name="Parameter.DoneButtonAction" type="CommandType" />
+                <xs:attribute name="Parameter.IsDoneEnabled" type="BooleanType" default="true" />
+                <xs:attribute name="Parameter.DoneButtonBrush" type="StringType" default="Standard.TriplePopupCloseButtons.DoneButton" />
+                <xs:attribute name="Parameter.ResetButtonHintDataSource" type="DataSourceType" />
+                <xs:attribute name="Parameter.DoneButtonHintDataSource" type="DataSourceType" />
+                <xs:attribute name="Parameter.ResetInputKeyDataSource" type="DataSourceType" />
+                <xs:attribute name="Parameter.CancelInputKeyDataSource" type="DataSourceType" />
+                <xs:attribute name="Parameter.DoneInputKeyDataSource" type="DataSourceType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Standard.VerticalScrollbar" type="StandardVerticalScrollbarType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardVerticalScrollbarType">
+        <xs:complexContent><xs:extension base="WidgetType" /></xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Standard.Window" type="StandardWindowType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="StandardWindowType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="Parameter.Title" type="StringType" default="Title Goes Here" />
+                <xs:attribute name="Parameter.Brush" type="StringType" default="Frame1Brush" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+</xs:schema>

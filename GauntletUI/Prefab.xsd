@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:include schemaLocation="AllWidgets.xsd" />
+
+    <xs:element name="Prefab">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Parameters" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Parameter" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:attribute name="Name" type="xs:string" use="required" />
+                                    <xs:attribute name="DefaultValue" type="xs:string" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Constants" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Constant" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:attribute name="Name" type="xs:string" use="required" />
+                                    <xs:attribute name="Value" type="xs:string" />
+                                    <xs:attribute name="Additive" type="xs:string" />
+                                    <xs:attribute name="MultiplyResult" type="xs:string" />
+
+                                    <xs:attribute name="BooleanCheck" type="xs:string" />
+                                    <xs:attribute name="OnFalse" type="xs:string" />
+                                    <xs:attribute name="OnTrue" type="xs:string" />
+
+                                    <xs:attribute name="BrushName" type="xs:string" />
+                                    <xs:attribute name="BrushLayer" type="xs:string" />
+                                    <xs:attribute name="BrushValueType" type="xs:string" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="VisualDefinitions" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="VisualDefinition" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="VisualState" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:attribute name="State" type="xs:string" use="required" />
+                                                <xs:attribute name="PositionXOffset" type="xs:string" />
+                                                <xs:attribute name="PositionYOffset" type="xs:string" />
+                                                <xs:attribute name="SuggestedWidth" type="xs:string" />
+                                                <xs:attribute name="SuggestedHeight" type="xs:string" />
+                                                <xs:attribute name="MarginTop" type="xs:string" />
+                                                <xs:attribute name="MarginBottom" type="xs:string" />
+                                                <xs:attribute name="MarginLeft" type="xs:string" />
+                                                <xs:attribute name="MarginRight" type="xs:string" />
+                                                <xs:anyAttribute processContents="lax" />
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+
+                                    <xs:attribute name="Name" type="xs:string" use="required" />
+                                    <xs:attribute name="TransitionDuration" type="xs:string" use="required" />
+                                    <xs:attribute name="DelayOnBegin" type="xs:string" />
+                                    <xs:attribute name="EaseType">
+                                        <xs:simpleType>
+                                            <xs:union>
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="EaseOut" />
+                                                        <xs:enumeration value="EaseInOut" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string" />
+                                                </xs:simpleType>
+                                            </xs:union>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="EaseFunction">
+                                        <xs:simpleType>
+                                            <xs:union>
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="Cubic" />
+                                                        <xs:enumeration value="Quint" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string" />
+                                                </xs:simpleType>
+                                            </xs:union>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Window" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element ref="WidgetBase" minOccurs="0" maxOccurs="1" />
+                            <xs:any namespace="##local" minOccurs="0" maxOccurs="1" processContents="lax" />
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

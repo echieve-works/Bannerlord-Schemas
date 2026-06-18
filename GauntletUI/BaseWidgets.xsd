@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:include schemaLocation="WidgetCore.xsd" />
+
+    <xs:element name="BrushWidget" type="BrushWidgetType" substitutionGroup="WidgetBase" />
+    
+    <xs:complexType name="BrushWidgetType">
+        <xs:complexContent><xs:extension base="WidgetType" /></xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="SelectedStateBrushWidget" type="SelectedStateBrushWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="SelectedStateBrushWidgetType">
+        <xs:complexContent>
+            <xs:extension base="BrushWidgetType">
+                <xs:attribute name="SelectedState" type="PrimitiveType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ImageWidget" type="ImageWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ImageWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="OverrideDefaultStateSwitchingEnabled" type="BooleanType" />
+                <xs:attribute name="OverrideDefaultStateSwitchingDisabled" type="BooleanType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="TextWidget" type="TextWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="TextWidgetType">
+        <xs:complexContent><xs:extension base="WidgetType">
+            <xs:attribute name="AutoHideIfEmpty" type="BooleanType" />
+            <xs:attribute name="FloatText" type="FloatType" />
+            <xs:attribute name="IntText" type="IntType" />
+            <xs:attribute name="Text" type="StringType" />
+            <xs:attribute name="Brush.Font" type="StringType" />
+            <xs:attribute name="Brush.FontSize" type="IntType" />
+            <xs:attribute name="Brush.FontColor" type="ColorType" />
+            <xs:attribute name="Brush.TextColorFactor" type="FloatType" />
+            <xs:attribute name="Brush.TextAlphaFactor" type="FloatType" />
+            <xs:attribute name="Brush.TextHueFactor" type="FloatType" />
+            <xs:attribute name="Brush.TextSaturationFactor" type="FloatType" />
+            <xs:attribute name="Brush.TextValueFactor" type="FloatType" />
+            <xs:attribute name="Brush.TextHorizontalAlignment" type="HorizontalAlignmentType" />
+            <xs:attribute name="Brush.TextVerticalAlignment" type="VerticalAlignmentType" />
+        </xs:extension></xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="EditableTextWidget" type="EditableTextWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="EditableTextWidgetType">
+        <xs:complexContent>
+            <xs:extension base="BrushWidgetType">
+                <xs:attribute name="AutoHideIfEmpty" type="BooleanType" />
+                <xs:attribute name="CanBreakWords" type="BooleanType" />
+                <xs:attribute name="RealText" type="StringType" />
+                <xs:attribute name="DefaultSearchText" type="StringType" />
+                <xs:attribute name="KeyboardInfoText" type="StringType" />
+                <xs:attribute name="IsObfuscationEnabled" type="BooleanType" />
+                <xs:attribute name="MaxLength" type="IntType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="FloatInputTextWidget" type="FloatInputTextWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="FloatInputTextWidgetType">
+        <xs:complexContent>
+            <xs:extension base="EditableTextWidgetType">
+                <xs:attribute name="EnableClamp" type="BooleanType" />
+                <xs:attribute name="FloatText" type="FloatType" />
+                <xs:attribute name="MaxFloat" type="FloatType" />
+                <xs:attribute name="MinFloat" type="FloatType" />
+
+                <xs:attribute name="Command.TextEntered" type="CommandType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="IntegerInputTextWidget" type="IntegerInputTextWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="IntegerInputTextWidgetType">
+        <xs:complexContent>
+            <xs:extension base="EditableTextWidgetType">
+                <xs:attribute name="EnableClamp" type="BooleanType" />
+                <xs:attribute name="IntText" type="IntType" />
+                <xs:attribute name="MaxInt" type="IntType" />
+                <xs:attribute name="MinInt" type="IntType" />
+
+                <xs:attribute name="Command.TextEntered" type="CommandType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="IntegerInputPercentageTextWidget" type="IntegerInputPercentageTextWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="IntegerInputPercentageTextWidgetType">
+        <xs:complexContent>
+            <xs:extension base="IntegerInputTextWidgetType">
+                <xs:attribute name="PercentageText" type="StringType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="RichTextWidget" type="RichTextWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="RichTextWidgetType">
+        <xs:complexContent>
+            <xs:extension base="BrushWidgetType">
+                <xs:attribute name="AutoHideIfEmpty" type="BooleanType" />
+                <xs:attribute name="CanBreakWords" type="BooleanType" />
+                <xs:attribute name="LinkHoverCursorState" type="StringType" />
+                <xs:attribute name="Text" type="StringType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ButtonWidget" type="ButtonWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ButtonWidgetType">
+        <xs:complexContent>
+            <xs:extension base="ImageWidgetType">
+                <xs:attribute name="ButtonType">
+                    <xs:simpleType>
+                        <xs:union memberTypes="PrimitiveType">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="ClickOnly" />
+                                    <xs:enumeration value="Toggle" />
+                                    <xs:enumeration value="Radio" />
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:union>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="IsSelected" type="BooleanType" />
+                <xs:attribute name="DominantSelectedState" type="BooleanType" />
+                <xs:attribute name="ToggleIndicator" type="WidgetValueType" />
+
+                <xs:attribute name="Command.Click" type="CommandType" />
+                <xs:attribute name="CommandParameter.Click" type="xs:string" />
+                <xs:attribute name="Command.DoubleClick" type="CommandType" />
+                <xs:attribute name="Command.AlternateClick" type="CommandType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="DropdownWidget" type="DropdownWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="DropdownWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="DoNotHandleDropdownListPanel" type="BooleanType" />
+                <xs:attribute name="IsOpen" type="BooleanType" />
+                <xs:attribute name="TextWidget" type="WidgetValueType" />
+                <xs:attribute name="ScrollablePanel" type="WidgetValueType" />
+                <xs:attribute name="Button" type="WidgetValueType" />
+                <xs:attribute name="ListPanel" type="WidgetValueType" />
+                <xs:attribute name="ListPanelValue" type="IntType" />
+                <xs:attribute name="CurrentSelectedIndex" type="IntType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="DragCarrierWidget" type="DragCarrierWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="DragCarrierWidgetType">
+        <xs:complexContent><xs:extension base="WidgetType" /></xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="HintWidget" type="HintWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="HintWidgetType">
+        <xs:complexContent><xs:extension base="WidgetType" /></xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="SliderWidget" type="SliderWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="SliderWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="UpdateValueOnScroll" type="BooleanType" />
+                <xs:attribute name="Locked" type="BooleanType" />
+                <xs:attribute name="DoNotUpdateHandleSize" type="BooleanType" />
+                <xs:attribute name="UpdateValueOnRelease" type="BooleanType" />
+                <xs:attribute name="UpdateValueContinuously" type="BooleanType" />
+                <xs:attribute name="ReverseDirection" type="BooleanType" />
+                <xs:attribute name="AlignmentAxis" type="AlignmentAxisType" />
+                <xs:attribute name="IsDiscrete" type="BooleanType" />
+                <xs:attribute name="MaxValueInt" type="IntType" />
+                <xs:attribute name="MinValueInt" type="IntType" />
+                <xs:attribute name="ValueInt" type="IntType" />
+                <xs:attribute name="MaxValueFloat" type="FloatType" />
+                <xs:attribute name="MinValueFloat" type="FloatType" />
+                <xs:attribute name="ValueFloat" type="FloatType" />
+                <xs:attribute name="Handle" type="WidgetValueType" />
+                <xs:attribute name="Filler" type="WidgetValueType" />
+                <xs:attribute name="HandleExtension" type="WidgetValueType" />
+                <xs:attribute name="SliderArea" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ListPanel" type="ListPanelType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ListPanelType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="StackLayout.LayoutMethod" type="StackLayoutMethodType" />
+                <xs:attribute name="StackLayout.LayoutImp" type="StackLayoutMethodType" />
+                <xs:attribute name="ResetSelectedOnLosingFocus" type="BooleanType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="GridWidget" type="GridWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="GridWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="ColumnCount" type="IntType" />
+                <xs:attribute name="RowCount" type="IntType" />
+                <xs:attribute name="DefaultCellWidth" type="FloatType" />
+                <xs:attribute name="DefaultCellHeight" type="FloatType" />
+                <xs:attribute name="UseDynamicCellWidth" type="BooleanType" />
+                <xs:attribute name="UseDynamicCellHeight" type="BooleanType" />
+                <xs:attribute name="LayoutImp">
+                    <xs:simpleType>
+                        <xs:union memberTypes="PrimitiveType">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="GridLayout" />
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:union>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="GridLayout.Direction">
+                    <xs:simpleType>
+                        <xs:union memberTypes="PrimitiveType">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="RowFirst" />
+                                    <xs:enumeration value="ColumnFirst" />
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:union>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="VerticalLayoutMethod">
+                    <xs:simpleType>
+                        <xs:union memberTypes="PrimitiveType">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="TopToBottom" />
+                                    <xs:enumeration value="Center" />
+                                    <xs:enumeration value="BottomToTop" />
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:union>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="HorizontalLayoutMethod">
+                    <xs:simpleType>
+                        <xs:union memberTypes="PrimitiveType">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="LeftToRight" />
+                                    <xs:enumeration value="Center" />
+                                    <xs:enumeration value="RightToLeft" />
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:union>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ScrollablePanel" type="ScrollablePanelType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ScrollablePanelType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="ClipRect" type="WidgetValueType" />
+                <xs:attribute name="InnerPanel" type="WidgetValueType" />
+                <xs:attribute name="FixedHeader" type="WidgetValueType" />
+                <xs:attribute name="ScrolledHeader" type="WidgetValueType" />
+                <xs:attribute name="VerticalScrollbar" type="WidgetValueType" />
+                <xs:attribute name="HorizontalScrollbar" type="WidgetValueType" />
+                <xs:attribute name="AutoHideScrollBars" type="BooleanType" />
+                <xs:attribute name="AutoHideScrollBarHandle" type="BooleanType" />
+                <xs:attribute name="AutoAdjustScrollbarHandleSize" type="BooleanType" />
+                <xs:attribute name="OnlyAcceptScrollEventIfCanScroll" type="BooleanType" />
+                <xs:attribute name="ReverseInitialScrollBarAlignment" type="BooleanType" />
+                <xs:attribute name="UpdateScrollbarVisibility" type="BooleanType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ScrollablePanelFixedHeaderWidget" type="ScrollablePanelFixedHeaderWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ScrollablePanelFixedHeaderWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="FixedHeader" type="WidgetValueType" />
+                <xs:attribute name="TopOffset" type="FloatType" />
+                <xs:attribute name="BottomOffset" type="FloatType" />
+                <xs:attribute name="HeaderHeight" type="FloatType" />
+                <xs:attribute name="AdditionalTopOffset" type="FloatType" />
+                <xs:attribute name="AdditionalBottomOffset" type="FloatType" />
+                <xs:attribute name="IsRelevant" type="BooleanType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="ScrollbarWidget" type="ScrollbarWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ScrollbarWidgetType">
+        <xs:complexContent>
+            <xs:extension base="ImageWidgetType">
+                <xs:attribute name="IsDiscrete" type="BooleanType" />
+                <xs:attribute name="Locked" type="BooleanType" />
+                <xs:attribute name="ReverseDirection" type="BooleanType" />
+                <xs:attribute name="DoNotUpdateHandleSize" type="BooleanType" />
+                <xs:attribute name="Handle" type="WidgetValueType" />
+                <xs:attribute name="ScrollbarArea" type="WidgetValueType" />
+                <xs:attribute name="AlignmentAxis" type="AlignmentAxisType" />
+                <xs:attribute name="MaxValue" type="FloatType" />
+                <xs:attribute name="MinValue" type="FloatType" />
+                <xs:attribute name="ValueFloat" type="FloatType" />
+                <xs:attribute name="ValueInt" type="IntType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="FillBarWidget" type="FillBarWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="FillBarWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="CompletelyFillChange" type="BooleanType" />
+                <xs:attribute name="ShowNegativeChange" type="BooleanType" />
+                <xs:attribute name="CustomChangeColor" type="BooleanType" />
+                <xs:attribute name="FillWidget" type="WidgetValueType" />
+                <xs:attribute name="ChangeWidget" type="WidgetValueType" />
+                <xs:attribute name="DividerWidget" type="WidgetValueType" />
+                <xs:attribute name="InitialAmount" type="IntType" />
+                <xs:attribute name="CurrentAmount" type="IntType" />
+                <xs:attribute name="MaxAmount" type="IntType" />
+                <xs:attribute name="InitialAmountAsFloat" type="FloatType" />
+                <xs:attribute name="CurrentAmountAsFloat" type="FloatType" />
+                <xs:attribute name="MaxAmountAsFloat" type="FloatType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="FillBarVerticalWidget" type="FillBarVerticalWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="FillBarVerticalWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="IsDirectionUpward" type="BooleanType" />
+                <xs:attribute name="FillWidget" type="WidgetValueType" />
+                <xs:attribute name="ChangeWidget" type="WidgetValueType" />
+                <xs:attribute name="DividerWidget" type="WidgetValueType" />
+                <xs:attribute name="ContainerWidget" type="WidgetValueType" />
+                <xs:attribute name="CurrentAmount" type="IntType" />
+                <xs:attribute name="InitialAmount" type="IntType" />
+                <xs:attribute name="MaxAmount" type="IntType" />
+                <xs:attribute name="InitialAmountAsFloat" type="FloatType" />
+                <xs:attribute name="CurrentAmountAsFloat" type="FloatType" />
+                <xs:attribute name="MaxAmountAsFloat" type="FloatType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="TextureWidget" type="TextureWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="TextureWidgetType">
+        <xs:complexContent>
+            <xs:extension base="ImageWidgetType">
+                <xs:attribute name="LoadingIconWidget" type="WidgetValueType" />
+                <xs:attribute name="TextureProviderName" type="StringType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="OnlineImageTextureWidget" type="OnlineImageTextureWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="OnlineImageTextureWidgetType">
+        <xs:complexContent>
+            <xs:extension base="TextureWidgetType">
+                <xs:attribute name="OnlineImageSourceUrl" type="StringType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="MaskedTextureWidget" type="MaskedTextureWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="MaskedTextureWidgetType">
+        <xs:complexContent>
+            <xs:extension base="TextureWidgetType">
+                <xs:attribute name="OverlayTextureScale" type="FloatType" />
+                <xs:attribute name="ImageId" type="StringType" />
+                <xs:attribute name="AdditionalArgs" type="StringType" />
+                <xs:attribute name="IsBig" type="BooleanType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="TabControl" type="TabControlType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="TabControlType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="ActiveTab" type="WidgetValueType" />
+                <xs:attribute name="SelectedIndex" type="IntType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="TabToggleWidget" type="TabToggleWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="TabToggleWidgetType">
+        <xs:complexContent>
+            <xs:extension base="ButtonWidgetType">
+                <xs:attribute name="TabControlWidget" type="WidgetValueType" />
+                <xs:attribute name="TabName" type="StringType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+</xs:schema>

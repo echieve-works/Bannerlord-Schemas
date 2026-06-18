@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:include schemaLocation="AllWidgets.xsd" />
+    <xs:include schemaLocation="BaseTypes.xsd" />
+    
+    <xs:element name="Children">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="WidgetBase" minOccurs="0" maxOccurs="unbounded" />
+                <xs:any namespace="##local" minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ItemTemplate">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="WidgetBase" minOccurs="0" maxOccurs="1" />
+                <xs:any namespace="##local" minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="WidgetBase" abstract="true" />
+
+    <xs:element name="Widget" type="WidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="WidgetType">
+        <xs:choice minOccurs="0" maxOccurs="1">
+            <xs:element ref="Children" />
+            <xs:element ref="ItemTemplate" />
+            <xs:element name="LogicalChildrenLocation" />
+        </xs:choice>
+
+        <xs:attribute name="DataSource" type="DataSourceType" />
+
+        <xs:attribute name="IsEnabled" type="BooleanType" />
+        <xs:attribute name="IsDisabled" type="BooleanType" />
+
+        <xs:attribute name="IsVisible" type="BooleanType" />
+        <xs:attribute name="IsHidden" type="BooleanType" />
+
+        <xs:attribute name="IsFocusable" type="BooleanType" />
+
+        <xs:attribute name="Id" type="xs:string" />
+
+        <xs:attribute name="WidthSizePolicy" type="SizePolicyType" />
+        <xs:attribute name="HeightSizePolicy" type="SizePolicyType" />
+
+        <xs:attribute name="MinWidth" type="FloatType" />
+        <xs:attribute name="SuggestedWidth" type="FloatType" />
+        <xs:attribute name="MaxWidth" type="FloatType" />
+        <xs:attribute name="MinHeight" type="FloatType" />
+        <xs:attribute name="SuggestedHeight" type="FloatType" />
+        <xs:attribute name="MaxHeight" type="FloatType" />
+
+        <xs:attribute name="HorizontalAlignment" type="HorizontalAlignmentType" />
+        <xs:attribute name="VerticalAlignment" type="VerticalAlignmentType" />
+
+        <xs:attribute name="MarginLeft" type="FloatType" />
+        <xs:attribute name="MarginRight" type="FloatType" />
+        <xs:attribute name="MarginTop" type="FloatType" />
+        <xs:attribute name="MarginBottom" type="FloatType" />
+
+        <xs:attribute name="ExtendLeft" type="FloatType" />
+        <xs:attribute name="ExtendRight" type="FloatType" />
+        <xs:attribute name="ExtendTop" type="FloatType" />
+        <xs:attribute name="ExtendBottom" type="FloatType" />
+
+        <xs:attribute name="PivotX" type="FloatType" />
+        <xs:attribute name="PivotY" type="FloatType" />
+
+        <xs:attribute name="NinePatchLeft" type="IntType" />
+        <xs:attribute name="NinePatchRight" type="IntType" />
+        <xs:attribute name="NinePatchTop" type="IntType" />
+        <xs:attribute name="NinePatchBottom" type="IntType" />
+
+        <xs:attribute name="Sprite" type="StringType" default="BlankWhiteSquare_9" />
+        <xs:attribute name="Color" type="ColorType" />
+        <xs:attribute name="ColorFactor" type="FloatType" />
+        <xs:attribute name="AlphaFactor" type="FloatType" />
+        <xs:attribute name="HueFactor" type="FloatType" />
+        <xs:attribute name="SaturationFactor" type="FloatType" />
+        <xs:attribute name="ValueFactor" type="FloatType" />
+
+        <xs:attribute name="PositionXOffset" type="FloatType" />
+        <xs:attribute name="PositionYOffset" type="FloatType" />
+
+        <xs:attribute name="Rotation" type="FloatType" />
+
+        <xs:attribute name="ClipContents" type="BooleanType" />
+        <xs:attribute name="ClipHorizontalContent" type="BooleanType" />
+        <xs:attribute name="ClipVerticalContent" type="BooleanType" />
+
+        <xs:attribute name="CircularClipEnabled" type="BooleanType" />
+        <xs:attribute name="CircularClipRadius" type="FloatType" />
+        <xs:attribute name="IsCircularClipRadiusHalfOfWidth" type="BooleanType" />
+        <xs:attribute name="IsCircularClipRadiusHalfOfHeight" type="BooleanType" />
+        <xs:attribute name="CircularClipSmoothingRadius" type="FloatType" />
+        <xs:attribute name="CircularClipXOffset" type="FloatType" />
+        <xs:attribute name="CircularClipYOffset" type="FloatType" />
+
+        <xs:attribute name="DoNotPassEventsToChildren" type="BooleanType" />
+        <xs:attribute name="DoNotAcceptEvents" type="BooleanType" />
+        <xs:attribute name="CanAcceptEvents" type="BooleanType" />
+        <xs:attribute name="UpdateChildrenStates" type="BooleanType" />
+        <xs:attribute name="RenderLate" type="BooleanType" />
+        <xs:attribute name="DoNotUseCustomScaleAndChildren" type="BooleanType" />
+        <xs:attribute name="DoNotUseCustomScale" type="BooleanType" />
+        <xs:attribute name="DoNotRenderIfNotFullyInsideScissor" type="BooleanType" />
+        <xs:attribute name="AlternateClickEventHasSpecialEvent" type="BooleanType" />
+        <xs:attribute name="ForcePixelPerfectRenderPlacement" type="BooleanType" />
+        <xs:attribute name="UseGlobalTimeForAnimation" type="BooleanType" />
+        <xs:attribute name="RestartAnimationFirstFrame" type="BooleanType" />
+        <xs:attribute name="DropEventHandledManually" type="BooleanType" />
+
+        <xs:attribute name="AcceptDrag" type="BooleanType" />
+        <xs:attribute name="AcceptDrop" type="BooleanType" />
+        <xs:attribute name="HideOnDrag" type="BooleanType" />
+        <xs:attribute name="DragWidget" type="WidgetValueType" />
+
+        <xs:attribute name="HoveredCursorState" type="StringType" />
+        <xs:attribute name="VisualDefinition" type="VisualDefinitionType" />
+
+        <xs:attribute name="HorizontalFlip" type="BooleanType" />
+        <xs:attribute name="VerticalFlip" type="BooleanType" />
+
+        <xs:attribute name="Brush" type="StringType" />
+        <xs:attribute name="Brush.Color" type="ColorType" />
+        <xs:attribute name="Brush.ColorFactor" type="FloatType" />
+        <xs:attribute name="Brush.GlobalColor" type="ColorType" />
+        <xs:attribute name="Brush.GlobalColorFactor" type="FloatType" />
+        <xs:attribute name="Brush.AlphaFactor" type="FloatType" />
+        <xs:attribute name="Brush.GlobalAlphaFactor" type="FloatType" />
+        <xs:attribute name="Brush.HueFactor" type="FloatType" />
+        <xs:attribute name="Brush.SaturationFactor" type="FloatType" />
+        <xs:attribute name="Brush.ValueFactor" type="FloatType" />
+        <xs:attribute name="Brush.VerticalFlip" type="BooleanType" />
+        <xs:attribute name="Brush.HorizontalFlip" type="BooleanType" />
+        <xs:attribute name="Brush.Sprite" type="StringType" />
+
+        <xs:attribute name="Command.ConnectedToRoot" type="CommandType" />
+        <xs:attribute name="Command.MouseDown" type="CommandType" />
+        <xs:attribute name="Command.MouseUp" type="CommandType" />
+        <xs:attribute name="Command.MouseAlternateDown" type="CommandType" />
+        <xs:attribute name="Command.MouseAlternateUp" type="CommandType" />
+        <xs:attribute name="Command.MouseMove" type="CommandType" />
+        <xs:attribute name="Command.HoverBegin" type="CommandType" />
+        <xs:attribute name="Command.HoverEnd" type="CommandType" />
+        <xs:attribute name="Command.DragBegin" type="CommandType" />
+        <xs:attribute name="Command.DragEnd" type="CommandType" />
+        <xs:attribute name="Command.Drop" type="CommandType" />
+        <xs:attribute name="CommandParameter.Drop" type="StringType" />
+        <xs:attribute name="Command.MouseScroll" type="CommandType" />
+        <xs:attribute name="Command.DragHoverBegin" type="CommandType" />
+        <xs:attribute name="Command.DragHoverEnd" type="CommandType" />
+        <xs:attribute name="Command.FocusGained" type="CommandType" />
+        <xs:attribute name="Command.FocusLost" type="CommandType" />
+        <xs:attribute name="Command.MouseOverBegin" type="CommandType" />
+        <xs:attribute name="Command.MouseOverEnd" type="CommandType" />
+        <xs:attribute name="Command.ItemAdded" type="CommandType" />
+        <xs:attribute name="Command.ItemRemove" type="CommandType" />
+        <xs:attribute name="Command.AfterItemRemove" type="CommandType" />
+        <xs:attribute name="Command.SiblingIndexChanged" type="CommandType" />
+
+        <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+    
+</xs:schema>

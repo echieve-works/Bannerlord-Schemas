@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:include schemaLocation="BaseWidgets.xsd" />
+
+    <xs:element name="SelectorWidget" type="SelectorWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="SelectorWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="ListPanelValue" type="IntType" />
+                <xs:attribute name="CurrentSelectedIndex" type="IntType" />
+                <xs:attribute name="Container" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="ImageIdentifierWidget" type="ImageIdentifierWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ImageIdentifierWidgetType">
+        <xs:complexContent>
+            <xs:extension base="TextureWidgetType">
+                <xs:attribute name="IsBig" type="BooleanType" />
+                <xs:attribute name="HideWhenNull" type="BooleanType" />
+                <xs:attribute name="ImageId" type="StringType" default="@Id" />
+                <xs:attribute name="AdditionalArgs" type="StringType" default="@AdditionalArgs" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="BannerTableauWidget" type="BannerTableauWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="BannerTableauWidgetType">
+        <xs:complexContent>
+            <xs:extension base="TextureWidgetType">
+                <xs:attribute name="BannerCodeText" type="StringType" />
+                <xs:attribute name="CustomRenderScale" type="FloatType" />
+                <xs:attribute name="IsNineGrid" type="BooleanType" />
+                <xs:attribute name="UpdatePositionValueManual" type="StringType" />
+                <xs:attribute name="UpdateSizeValueManual" type="StringType" />
+                <xs:attribute name="UpdateRotationValueManualWithMirror" type="StringType" />
+                <xs:attribute name="MeshIndexToUpdate" type="IntType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ItemTableauWidget" type="ItemTableauWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ItemTableauWidgetType">
+        <xs:complexContent>
+            <xs:extension base="TextureWidgetType">
+                <xs:attribute name="ItemModifierId" type="StringType" />
+                <xs:attribute name="StringId" type="StringType" />
+                <xs:attribute name="InitialTiltRotation" type="FloatType" />
+                <xs:attribute name="InitialPanRotation" type="FloatType" />
+                <xs:attribute name="BannerCode" type="StringType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="ItemTypeVisualBrushWidget" type="ItemTypeVisualBrushWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ItemTypeVisualBrushWidgetType">
+        <xs:complexContent>
+            <xs:extension base="BrushWidgetType">
+                <xs:attribute name="ItemTypeAsString" type="StringType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="EquipmentTypeVisualBrushWidget" type="EquipmentTypeVisualBrushWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="EquipmentTypeVisualBrushWidgetType">
+        <xs:complexContent>
+            <xs:extension base="BrushWidgetType">
+                <xs:attribute name="Type" type="StringType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ScreenBackgroundBrushWidget" type="ScreenBackgroundBrushWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ScreenBackgroundBrushWidgetType">
+        <xs:complexContent>
+            <xs:extension base="BrushWidgetType">
+                <xs:attribute name="IsParticleVisible" type="BooleanType" />
+                <xs:attribute name="IsSmokeVisible" type="BooleanType" />
+                <xs:attribute name="IsFullscreenImageEnabled" type="BooleanType" />
+                <xs:attribute name="AnimEnabled" type="BooleanType" />
+                <xs:attribute name="ParticleWidget1" type="WidgetValueType" />
+                <xs:attribute name="ParticleWidget2" type="WidgetValueType" />
+                <xs:attribute name="SmokeWidget1" type="WidgetValueType" />
+                <xs:attribute name="SmokeWidget2" type="WidgetValueType" />
+                <xs:attribute name="SmokeSpeedModifier" type="FloatType" />
+                <xs:attribute name="ParticleSpeedModifier" type="FloatType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="CharacterTableauWidget" type="CharacterTableauWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="CharacterTableauWidgetType">
+        <xs:complexContent>
+            <xs:extension base="TextureWidgetType">
+                <xs:attribute name="BannerCodeText" type="StringType" default="@BannerCodeText" />
+                <xs:attribute name="BodyProperties" type="StringType" default="@BodyProperties" />
+                <xs:attribute name="CharStringId" type="StringType" default="@CharStringId" />
+                <xs:attribute name="EquipmentCode" type="StringType" default="@EquipmentCode" />
+                <xs:attribute name="IsFemale" type="BooleanType" default="@IsFemale" />
+                <xs:attribute name="MountCreationKey" type="StringType" default="@MountCreationKey" />
+                <xs:attribute name="StanceIndex" type="IntType" default="@StanceIndex" />
+                <xs:attribute name="ArmorColor1" type="StringType" default="@ArmorColor1" />
+                <xs:attribute name="ArmorColor2" type="StringType" default="@ArmorColor2" />
+                <xs:attribute name="Race" type="IntType" default="@Race" />
+                <xs:attribute name="SwapPlacesButtonWidget" type="WidgetValueType" />
+                <xs:attribute name="CustomAnimationProgressRatio" type="FloatType" />
+                <xs:attribute name="CustomRenderScale" type="FloatType" />
+                <xs:attribute name="IsEquipmentAnimActive" type="BooleanType" />
+                <xs:attribute name="IsBannerShownInBackground" type="BooleanType" />
+                <xs:attribute name="IsPlayingCustomAnimations" type="BooleanType" />
+                <xs:attribute name="ShouldLoopCustomAnimation" type="BooleanType" />
+                <xs:attribute name="IdleAction" type="StringType" />
+                <xs:attribute name="IdleFaceAnim" type="StringType" />
+                <xs:attribute name="CustomAnimation" type="StringType" />
+                <xs:attribute name="LeftHandWieldedEquipmentIndex" type="IntType" />
+                <xs:attribute name="RightHandWieldedEquipmentIndex" type="IntType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="ClickableCharacterTableauWidget" type="ClickableCharacterTableauWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ClickableCharacterTableauWidgetType">
+        <xs:complexContent><xs:extension base="CharacterTableauWidgetType" /></xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="SceneWidget" type="SceneWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="SceneWidgetType">
+        <xs:complexContent>
+            <xs:extension base="TextureWidgetType">
+                <xs:attribute name="Scene" type="StringType" default="@Scene" />
+                <xs:attribute name="Command.Close" type="CommandType" default="ExecuteClose" />
+                <xs:attribute name="AffirmativeButton" type="WidgetValueType" />
+                <xs:attribute name="CancelButton" type="WidgetValueType" />
+                <xs:attribute name="ClickToContinueTextWidget" type="WidgetValueType" />
+                <xs:attribute name="TitleTextWidget" type="WidgetValueType" />
+                <xs:attribute name="FadeImageWidget" type="WidgetValueType" />
+                <xs:attribute name="PreparingVisualWidget" type="WidgetValueType" />
+                <xs:attribute name="EndProgress" type="FloatType" />
+                <xs:attribute name="FadeInDuration" type="FloatType" />
+                <xs:attribute name="IsOkShown" type="BooleanType" />
+                <xs:attribute name="IsCancelShown" type="BooleanType" />
+                <xs:attribute name="IsReady" type="BooleanType" />
+                <xs:attribute name="AffirmativeTitleText" type="StringType" />
+                <xs:attribute name="NegativeTitleText" type="StringType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="CircleLoadingAnimWidget" type="CircleLoadingAnimWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="CircleLoadingAnimWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="NumOfCirclesInASecond" type="FloatType" default="0.5" />
+                <xs:attribute name="FullAlpha" type="FloatType" default="1" />
+                <xs:attribute name="CircleRadius" type="FloatType" default="50" />
+                <xs:attribute name="StaySeconds" type="FloatType" default="2" />
+                <xs:attribute name="FadeInSeconds" type="FloatType" default="0.2" />
+                <xs:attribute name="FadeOutSeconds" type="FloatType" default="0.2" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="WarningTextWidget" type="WarningTextWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="WarningTextWidgetType">
+        <xs:complexContent>
+            <xs:extension base="TextWidgetType">
+                <xs:attribute name="IsWarned" type="BooleanType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="ChangeAmountTextWidget" type="ChangeAmountTextWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ChangeAmountTextWidgetType">
+        <xs:complexContent>
+            <xs:extension base="TextWidgetType">
+                <xs:attribute name="Amount" type="IntType" />
+                <xs:attribute name="UseParentheses" type="BooleanType" />
+                <xs:attribute name="ShouldBeVisible" type="BooleanType" />
+                <xs:attribute name="NegativeBrushName" type="StringType" />
+                <xs:attribute name="PositiveBrushName" type="StringType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="AutoHideTextWidget" type="AutoHideTextWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="AutoHideTextWidgetType">
+        <xs:complexContent>
+            <xs:extension base="TextWidgetType">
+                <xs:attribute name="WidgetToHideIfEmpty" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="AutoHideZeroTextWidget" type="AutoHideZeroTextWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="AutoHideZeroTextWidgetType">
+        <xs:complexContent><xs:extension base="TextWidgetType" /></xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="AutoHideRichTextWidget" type="AutoHideRichTextWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="AutoHideRichTextWidgetType">
+        <xs:complexContent>
+            <xs:extension base="RichTextWidgetType">
+                <xs:attribute name="WidgetToHideIfEmpty" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ColorButtonWidget" type="ColorButtonWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ColorButtonWidgetType">
+        <xs:complexContent>
+            <xs:extension base="ButtonWidgetType">
+                <xs:attribute name="ColorToApply" type="ColorType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="HoverToggleWidget" type="HoverToggleWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="HoverToggleWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="WidgetToShow" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ToggleButtonWidget" type="ToggleButtonWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ToggleButtonWidgetType">
+        <xs:complexContent>
+            <xs:extension base="ButtonWidgetType">
+                <xs:attribute name="IsTargetVisible" type="BooleanType" />
+                <xs:attribute name="WidgetToClose" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ToggleStateButtonWidget" type="ToggleStateButtonWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ToggleStateButtonWidgetType">
+        <xs:complexContent>
+            <xs:extension base="ButtonWidgetType">
+                <xs:attribute name="AllowSwitchOff" type="BooleanType" />
+                <xs:attribute name="NotifyParentForSelection" type="BooleanType" />
+                <xs:attribute name="WidgetToClose" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="DropdownButtonWidget" type="DropdownButtonWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="DropdownButtonWidgetType">
+        <xs:complexContent>
+            <xs:extension base="ButtonWidgetType">
+                <xs:attribute name="DisplayedList" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="IconBrushWidget" type="IconBrushWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="IconBrushWidgetType">
+        <xs:complexContent>
+            <xs:extension base="ButtonWidgetType">
+                <xs:attribute name="IconBrush" type="StringType" />
+                <xs:attribute name="IconId" type="StringType" />
+                <xs:attribute name="UseStylesFromSourceIcon" type="BooleanType" />
+                <xs:attribute name="UseIconSize" type="BooleanType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="IconOffsetButtonWidget" type="IconOffsetButtonWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="IconOffsetButtonWidgetType">
+        <xs:complexContent>
+            <xs:extension base="IconBrushWidgetType">
+                <xs:attribute name="NormalXOffset" type="IntType" />
+                <xs:attribute name="NormalYOffset" type="IntType" />
+                <xs:attribute name="PressedXOffset" type="IntType" />
+                <xs:attribute name="PressedYOffset" type="IntType" />
+                <xs:attribute name="ButtonIcon" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="TabControlWidget" type="TabControlWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="TabControlWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="FirstButton" type="WidgetValueType" />
+                <xs:attribute name="FirstItem" type="WidgetValueType" />
+                <xs:attribute name="SecondButton" type="WidgetValueType" />
+                <xs:attribute name="SecondItem" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="SortButtonWidget" type="SortButtonWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="SortButtonWidgetType">
+        <xs:complexContent>
+            <xs:extension base="ButtonWidgetType">
+                <xs:attribute name="SortState" type="IntType" />
+                <xs:attribute name="SortVisualWidget" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ListPanelDropdownWidget" type="ListPanelDropdownWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="ListPanelDropdownWidgetType">
+        <xs:complexContent>
+            <xs:extension base="DropdownWidgetType">
+                <xs:attribute name="ListPanelContainer" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="NumericUpDownWidget" type="NumericUpDownWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="NumericUpDownWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="ShowOneAdded" type="BooleanType" />
+                <xs:attribute name="IntValue" type="IntType" />
+                <xs:attribute name="Value" type="FloatType" />
+                <xs:attribute name="MinValue" type="FloatType" />
+                <xs:attribute name="MaxValue" type="FloatType" />
+                <xs:attribute name="TextWidget" type="WidgetValueType" />
+                <xs:attribute name="UpButton" type="WidgetValueType" />
+                <xs:attribute name="DownButton" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="SkillIconVisualWidget" type="SkillIconVisualWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="SkillIconVisualWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="SkillId" type="StringType" />
+                <xs:attribute name="UseSmallVariation" type="BooleanType" />
+                <xs:attribute name="UseSmallestVariation" type="BooleanType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="NavigationScopeTargeter" type="NavigationScopeTargeterType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="NavigationScopeTargeterType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="ScopeID" type="StringType" />
+                <xs:attribute name="ScopeMovements" type="GamepadNavigationTypes" />
+                <xs:attribute name="AlternateScopeMovements" type="GamepadNavigationTypes" />
+                <xs:attribute name="AlternateMovementStepSize" type="IntType" />
+                <xs:attribute name="HasCircularMovement" type="BooleanType" />
+                <xs:attribute name="DoNotAutomaticallyFindChildren" type="BooleanType" />
+                <xs:attribute name="DoNotAutoGainNavigationOnInit" type="BooleanType" />
+                <xs:attribute name="ForceGainNavigationBasedOnDirection" type="BooleanType" />
+                <xs:attribute name="ForceGainNavigationOnClosestChild" type="BooleanType" />
+                <xs:attribute name="ForceGainNavigationOnFirstChild" type="BooleanType" />
+                <xs:attribute name="NavigateFromScopeEdges" type="BooleanType" />
+                <xs:attribute name="UseDiscoveryAreaAsScopeEdges" type="BooleanType" />
+                <xs:attribute name="DoNotAutoNavigateAfterSort" type="BooleanType" />
+                <xs:attribute name="FollowMobileTargets" type="BooleanType" />
+                <xs:attribute name="DoNotAutoCollectChildScopes" type="BooleanType" />
+                <xs:attribute name="IsDefaultNavigationScope" type="BooleanType" />
+                <xs:attribute name="ExtendDiscoveryAreaTop" type="FloatType" />
+                <xs:attribute name="ExtendDiscoveryAreaRight" type="FloatType" />
+                <xs:attribute name="ExtendDiscoveryAreaBottom" type="FloatType" />
+                <xs:attribute name="ExtendDiscoveryAreaLeft" type="FloatType" />
+                <xs:attribute name="ExtendChildrenCursorAreaLeft" type="FloatType" />
+                <xs:attribute name="ExtendChildrenCursorAreaRight" type="FloatType" />
+                <xs:attribute name="ExtendChildrenCursorAreaTop" type="FloatType" />
+                <xs:attribute name="ExtendChildrenCursorAreaBottom" type="FloatType" />
+                <xs:attribute name="DiscoveryAreaOffsetX" type="FloatType" />
+                <xs:attribute name="DiscoveryAreaOffsetY" type="FloatType" />
+                <xs:attribute name="IsScopeEnabled" type="BooleanType" />
+                <xs:attribute name="IsScopeDisabled" type="BooleanType" />
+                <xs:attribute name="UpNavigationScope" type="StringType" />
+                <xs:attribute name="RightNavigationScope" type="StringType" />
+                <xs:attribute name="DownNavigationScope" type="StringType" />
+                <xs:attribute name="LeftNavigationScope" type="StringType" />
+                <xs:attribute name="UpNavigationScopeTargeter" type="WidgetValueType" />
+                <xs:attribute name="RightNavigationScopeTargeter" type="WidgetValueType" />
+                <xs:attribute name="DownNavigationScopeTargeter" type="WidgetValueType" />
+                <xs:attribute name="LeftNavigationScopeTargeter" type="WidgetValueType" />
+                <xs:attribute name="ScopeParent" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="NavigationTargetSwitcher" type="NavigationTargetSwitcherType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="NavigationTargetSwitcherType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="ToTarget" type="WidgetValueType" />
+                <xs:attribute name="FromTarget" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="NavigatableListPanel" type="NavigatableListPanelType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="NavigatableListPanelType">
+        <xs:complexContent>
+            <xs:extension base="ListPanelType">
+                <xs:attribute name="ParentPanel" type="WidgetValueType" />
+                <xs:attribute name="AutoScrollTopOffset" type="IntType" />
+                <xs:attribute name="AutoScrollBottomOffset" type="IntType" />
+                <xs:attribute name="AutoScrollLeftOffset" type="IntType" />
+                <xs:attribute name="AutoScrollRightOffset" type="IntType" />
+                <xs:attribute name="MinIndex" type="IntType" />
+                <xs:attribute name="MaxIndex" type="IntType" />
+                <xs:attribute name="StepSize" type="IntType" />
+                <xs:attribute name="UseSelfIndexForMinimum" type="BooleanType" />
+                <xs:attribute name="EmptyNavigationWidget" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="NavigatableGridWidget" type="NavigatableGridWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="NavigatableGridWidgetType">
+        <xs:complexContent>
+            <xs:extension base="GridWidgetType">
+                <xs:attribute name="ParentPanel" type="WidgetValueType" />
+                <xs:attribute name="AutoScrollTopOffset" type="IntType" />
+                <xs:attribute name="AutoScrollBottomOffset" type="IntType" />
+                <xs:attribute name="AutoScrollLeftOffset" type="IntType" />
+                <xs:attribute name="AutoScrollRightOffset" type="IntType" />
+                <xs:attribute name="MinIndex" type="IntType" />
+                <xs:attribute name="MaxIndex" type="IntType" />
+                <xs:attribute name="StepSize" type="IntType" />
+                <xs:attribute name="UseSelfIndexForMinimum" type="BooleanType" />
+                <xs:attribute name="EmptyNavigationWidget" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="NavigationAutoScrollWidget" type="NavigationAutoScrollWidgetType" substitutionGroup="WidgetBase" />
+    <xs:complexType name="NavigationAutoScrollWidgetType">
+        <xs:complexContent>
+            <xs:extension base="WidgetType">
+                <xs:attribute name="ParentPanel" type="WidgetValueType" />
+                <xs:attribute name="AutoScrollTopOffset" type="IntType" />
+                <xs:attribute name="AutoScrollBottomOffset" type="IntType" />
+                <xs:attribute name="AutoScrollLeftOffset" type="IntType" />
+                <xs:attribute name="AutoScrollRightOffset" type="IntType" />
+                <xs:attribute name="IncludeChildren" type="BooleanType" />
+                <xs:attribute name="TrackedWidget" type="WidgetValueType" />
+                <xs:attribute name="ScrollTarget" type="WidgetValueType" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+</xs:schema>

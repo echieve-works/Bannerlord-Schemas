@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <xs:simpleType name="PrimitiveType">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="|@[a-zA-Z0-9_]+|[!*][a-zA-Z0-9._]+" />
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="@Property" />
+                    <xs:enumeration value="!Constant" />
+                    <xs:enumeration value="*Parameter" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="DataSourceType">
+        <xs:union memberTypes="PrimitiveType">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="\{((\.\.\\)|(\.\.))*[a-zA-Z0-9_\\]*\}" />
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="{DataSource}" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="CommandType">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="|[a-zA-Z0-9_]*|[!*][a-zA-Z0-9._]+" />
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Method" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="VisualDefinitionType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="|[a-zA-Z0-9_.]*" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringType">
+        <xs:union memberTypes="PrimitiveType">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="|[^@!*].*" />
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Text" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="WidgetValueType">
+        <xs:union memberTypes="PrimitiveType">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="|[^@!*].*" />
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Widget" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="BooleanType">
+        <xs:union memberTypes="PrimitiveType">
+            <xs:simpleType>
+                <xs:restriction base="xs:boolean">
+                    <xs:enumeration value="true" />
+                    <xs:enumeration value="false" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="FloatType">
+        <xs:union memberTypes="PrimitiveType">
+            <xs:simpleType>
+                <xs:restriction base="xs:float" />
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="IntType">
+        <xs:union memberTypes="PrimitiveType">
+            <xs:simpleType>
+                <xs:restriction base="xs:int" />
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="ColorType">
+        <xs:union memberTypes="PrimitiveType">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="#[a-fA-F0-9]{8}" />
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="#FFFFFFFF" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="SizePolicyType">
+        <xs:union memberTypes="PrimitiveType">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="StretchToParent" />
+                    <xs:enumeration value="CoverChildren" />
+                    <xs:enumeration value="Fixed" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="HorizontalAlignmentType">
+        <xs:union memberTypes="PrimitiveType">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Left" />
+                    <xs:enumeration value="Center" />
+                    <xs:enumeration value="Right" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="VerticalAlignmentType">
+        <xs:union memberTypes="PrimitiveType">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Top" />
+                    <xs:enumeration value="Center" />
+                    <xs:enumeration value="Bottom" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="AlignmentAxisType">
+        <xs:union memberTypes="PrimitiveType">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Horizontal" />
+                    <xs:enumeration value="Vertical" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="StackLayoutMethodType">
+        <xs:union memberTypes="PrimitiveType">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="HorizontalLeftToRight" />
+                    <xs:enumeration value="HorizontalRightToLeft" />
+                    <xs:enumeration value="VerticalTopToBottom" />
+                    <xs:enumeration value="VerticalBottomToTop" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="GamepadNavigationTypes">
+        <xs:union memberTypes="PrimitiveType">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="None" />
+                    <xs:enumeration value="Up" />
+                    <xs:enumeration value="Down" />
+                    <xs:enumeration value="Vertical" />
+                    <xs:enumeration value="Left" />
+                    <xs:enumeration value="Right" />
+                    <xs:enumeration value="Horizontal" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+    
+</xs:schema>
