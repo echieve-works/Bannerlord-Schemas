@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="base">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="2">
+                <xs:element name="tags" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="tag" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:attribute name="language" type="xs:string" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="strings" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="string" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:attribute name="id" type="xs:string" use="required" />
+                                    <xs:attribute name="text" type="xs:string" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+            </xs:choice>
+            <xs:attribute name="type" type="xs:string" default="string" use="required" />
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
