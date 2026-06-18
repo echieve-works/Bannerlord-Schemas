@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <xs:include schemaLocation="BaseWidgets.xsd" />
+    <xs:include schemaLocation="Bannerlord-Schemas-GauntletUI-BaseWidgets.xsd" />
 
     <xs:element name="SelectorWidget" type="SelectorWidgetType" substitutionGroup="WidgetBase" />
     <xs:complexType name="SelectorWidgetType">

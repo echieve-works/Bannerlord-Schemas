@@ -8,9 +8,9 @@ The reason `Children` and `ItemTemplate` appear globally rather than strictly un
 
 This is a workaround due to the limitations of `XSD 1.0`. While `XSD 1.1` could likely resolve this issue, I decided to stick with `XSD 1.0` to ensure broader compatibility across various development platforms and environments.
 
-Prefab Example (https://echieve-works.github.io/Bannerlord-Schemas/GauntletUI/GauntletUI.xsd)
+Prefab Example (https://echieve-works.github.io/Bannerlord-Schemas/GauntletUI.xsd)
 ```xml
-<Prefab xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://echieve-works.github.io/Bannerlord-Schemas/GauntletUI/GauntletUI.xsd">
+<Prefab xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://echieve-works.github.io/Bannerlord-Schemas/GauntletUI.xsd">
     <Parameters>
         <Parameter Name="Width" DefaultValue="100" />
     </Parameters>
@@ -27,9 +27,9 @@ Prefab Example (https://echieve-works.github.io/Bannerlord-Schemas/GauntletUI/Ga
 </Prefab>
 ```
 
-Widget-Only Example (https://echieve-works.github.io/Bannerlord-Schemas/GauntletUI/GauntletUIWidgets.xsd)
+Widget-Only Example (https://echieve-works.github.io/Bannerlord-Schemas/GauntletUIWidgets.xsd)
 ```xml
-<Widget xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://echieve-works.github.io/Bannerlord-Schemas/GauntletUI/GauntletUIWidgets.xsd"
+<Widget xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://echieve-works.github.io/Bannerlord-Schemas/GauntletUIWidgets.xsd"
         WidgetSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="100" SuggestedHeight="100">
     <Children>
         <TextWidget Text="Hello World!" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" />
