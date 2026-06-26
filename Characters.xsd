@@ -2,16 +2,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
     <xs:include schemaLocation="Bannerlord-Schemas-BodyPropertyTypes.xsd" />
-    
-    <xs:simpleType name="ItemType">
-        <xs:union memberTypes="xs:string">
-            <xs:simpleType>
-                <xs:restriction base="xs:string">
-                    <xs:enumeration value="Item." />
-                </xs:restriction>
-            </xs:simpleType>
-        </xs:union>
-    </xs:simpleType>
+    <xs:include schemaLocation="Bannerlord-Schemas-ObjectTypes.xsd" />
     
     <xs:simpleType name="EquipmentSlotType">
         <xs:union memberTypes="xs:string">
@@ -44,17 +35,7 @@
                                     <xs:choice minOccurs="0" maxOccurs="unbounded">
                                         <xs:element name="face_key_template" minOccurs="0" maxOccurs="1">
                                             <xs:complexType>
-                                                <xs:attribute name="value" use="required">
-                                                    <xs:simpleType>
-                                                        <xs:union memberTypes="xs:string">
-                                                            <xs:simpleType>
-                                                                <xs:restriction base="xs:string">
-                                                                    <xs:enumeration value="BodyProperty." />
-                                                                </xs:restriction>
-                                                            </xs:simpleType>
-                                                        </xs:union>
-                                                    </xs:simpleType>
-                                                </xs:attribute>
+                                                <xs:attribute name="value" use="required" type="BodyPropertyObjectType" />
                                             </xs:complexType>
                                         </xs:element>
                                         <xs:element name="BodyProperties" minOccurs="0" maxOccurs="1" type="BodyPropertyType" />
@@ -143,28 +124,12 @@
                                     </xs:choice>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="feats" minOccurs="0" maxOccurs="1">
-                                <xs:complexType>
-                                    <xs:choice>
-                                    </xs:choice>
-                                </xs:complexType>
-                            </xs:element>
                             <xs:element name="upgrade_targets" minOccurs="0" maxOccurs="1">
                                 <xs:complexType>
                                     <xs:choice>
                                         <xs:element name="upgrade_target" minOccurs="0" maxOccurs="unbounded">
                                             <xs:complexType>
-                                                <xs:attribute name="id">
-                                                    <xs:simpleType>
-                                                        <xs:union memberTypes="xs:string">
-                                                            <xs:simpleType>
-                                                                <xs:restriction base="xs:string">
-                                                                    <xs:enumeration value="NPCCharacter." />
-                                                                </xs:restriction>
-                                                            </xs:simpleType>
-                                                        </xs:union>
-                                                    </xs:simpleType>
-                                                </xs:attribute>
+                                                <xs:attribute name="id" type="CharacterObjectType" />
                                             </xs:complexType>
                                         </xs:element>
                                     </xs:choice>
@@ -178,7 +143,7 @@
                                                 <xs:choice>
                                                     <xs:element name="equipment" minOccurs="0" maxOccurs="unbounded">
                                                         <xs:complexType>
-                                                            <xs:attribute name="id" type="ItemType" use="required" />
+                                                            <xs:attribute name="id" type="ItemObjectType" use="required" />
                                                             <xs:attribute name="slot" type="EquipmentSlotType" use="required" />
                                                         </xs:complexType>
                                                     </xs:element>
@@ -190,11 +155,12 @@
                                             <xs:complexType>
                                                 <xs:attribute name="id" type="xs:string" use="required" />
                                                 <xs:attribute name="civilian" type="xs:boolean" />
+                                                <xs:attribute name="equipmentType" type="xs:string" />
                                             </xs:complexType>
                                         </xs:element>
                                         <xs:element name="equipment" minOccurs="0" maxOccurs="unbounded">
                                             <xs:complexType>
-                                                <xs:attribute name="id" type="ItemType" use="required" />
+                                                <xs:attribute name="id" type="ItemObjectType" use="required" />
                                                 <xs:attribute name="slot" type="EquipmentSlotType" use="required" />
                                             </xs:complexType>
                                         </xs:element>
@@ -204,17 +170,24 @@
 
                             <xs:element name="Resistances" minOccurs="0" maxOccurs="1">
                                 <xs:complexType>
-                                    <xs:attribute name="dismount" type="xs:int" />
+                                    <xs:attribute name="dismount" type="xs:float" />
+                                    <xs:attribute name="knockback" type="xs:float" />
+                                    <xs:attribute name="knockdown" type="xs:float" />
                                 </xs:complexType>
                             </xs:element>
                         </xs:choice>
                         
                         <xs:attribute name="id" type="xs:string" />
                         <xs:attribute name="is_hidden_encyclopedia" type="xs:boolean" />
+                        <xs:attribute name="is_basic_troop" type="xs:boolean" />
                         <xs:attribute name="is_template" type="xs:boolean" />
                         <xs:attribute name="is_obsolete" type="xs:boolean" />
                         <xs:attribute name="is_female" type="xs:boolean" />
                         <xs:attribute name="is_hero" type="xs:boolean" />
+                        <xs:attribute name="level" type="xs:int" />
+                        <xs:attribute name="race" type="xs:string" />
+                        <xs:attribute name="name" type="xs:string" />
+                        <xs:attribute name="age" type="xs:float" />
                         <xs:attribute name="formation_position_preference">
                             <xs:simpleType>
                                 <xs:union memberTypes="xs:string">
@@ -241,9 +214,6 @@
                                 </xs:union>
                             </xs:simpleType>
                         </xs:attribute>
-                        <xs:attribute name="level" type="xs:int" />
-                        <xs:attribute name="name" type="xs:string" />
-                        <xs:attribute name="age" type="xs:float" />
                         <xs:attribute name="voice">
                             <xs:simpleType>
                                 <xs:union memberTypes="xs:string">
@@ -261,6 +231,7 @@
                         <xs:attribute name="banner_symbol_mesh_name" type="xs:string" />
                         <xs:attribute name="banner_symbol_color" type="xs:string" />
                         <xs:attribute name="face_mesh_cache" type="xs:boolean" />
+                        <xs:attribute name="upgrade_requires" type="ItemCategoryObjectType" />
                         <xs:attribute name="occupation">
                             <xs:simpleType>
                                 <xs:union memberTypes="xs:string">
@@ -300,43 +271,8 @@
                                 </xs:union>
                             </xs:simpleType>
                         </xs:attribute>
-                        <xs:attribute name="culture">
-                            <xs:simpleType>
-                                <xs:union memberTypes="xs:string">
-                                    <xs:simpleType>
-                                        <xs:restriction base="xs:string">
-                                            <xs:enumeration value="Culture.empire" />
-                                            <xs:enumeration value="Culture.battania" />
-                                            <xs:enumeration value="Culture.vlandia" />
-                                            <xs:enumeration value="Culture.sturgia" />
-                                            <xs:enumeration value="Culture.aserai" />
-                                            <xs:enumeration value="Culture.khuzait" />
-                                            <xs:enumeration value="Culture.nord" />
-                                            <xs:enumeration value="Culture.vakken" />
-                                            <xs:enumeration value="Culture.darshi" />
-                                            <xs:enumeration value="Culture.neutral_culture" />
-                                            <xs:enumeration value="Culture.forest_bandits" />
-                                            <xs:enumeration value="Culture.sea_raiders" />
-                                            <xs:enumeration value="Culture.mountain_bandits" />
-                                            <xs:enumeration value="Culture.desert_bandits" />
-                                            <xs:enumeration value="Culture.steppe_bandits" />
-                                            <xs:enumeration value="Culture.looters" />
-                                        </xs:restriction>
-                                    </xs:simpleType>
-                                </xs:union>
-                            </xs:simpleType>
-                        </xs:attribute>
-                        <xs:attribute name="skill_template">
-                            <xs:simpleType>
-                                <xs:union memberTypes="xs:string">
-                                    <xs:simpleType>
-                                        <xs:restriction base="xs:string">
-                                            <xs:enumeration value="SkillSet." />
-                                        </xs:restriction>
-                                    </xs:simpleType>
-                                </xs:union>
-                            </xs:simpleType>
-                        </xs:attribute>
+                        <xs:attribute name="culture" type="CultureObjectType" />
+                        <xs:attribute name="skill_template" type="SkillSetObjectType" />
                     </xs:complexType>
                 </xs:element>
             </xs:choice>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:simpleType name="CharacterObjectType">
+        <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="NPCCharacter." />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="HeroObjectType">
+        <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Hero." />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="CultureObjectType">
+        <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Culture." />
+                    <xs:enumeration value="Culture.empire" />
+                    <xs:enumeration value="Culture.battania" />
+                    <xs:enumeration value="Culture.vlandia" />
+                    <xs:enumeration value="Culture.sturgia" />
+                    <xs:enumeration value="Culture.aserai" />
+                    <xs:enumeration value="Culture.khuzait" />
+                    <xs:enumeration value="Culture.nord" />
+                    <xs:enumeration value="Culture.vakken" />
+                    <xs:enumeration value="Culture.darshi" />
+                    <xs:enumeration value="Culture.neutral_culture" />
+                    <xs:enumeration value="Culture.forest_bandits" />
+                    <xs:enumeration value="Culture.sea_raiders" />
+                    <xs:enumeration value="Culture.mountain_bandits" />
+                    <xs:enumeration value="Culture.desert_bandits" />
+                    <xs:enumeration value="Culture.steppe_bandits" />
+                    <xs:enumeration value="Culture.looters" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="FactionObjectType">
+        <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Faction." />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+    
+    <xs:simpleType name="ItemObjectType">
+        <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Item." />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="ItemCategoryObjectType">
+        <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="ItemCategory." />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+    
+    <xs:simpleType name="BodyPropertyObjectType">
+        <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="BodyProperty." />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="SkillSetObjectType">
+        <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="SkillSet." />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+    
+</xs:schema>

@@ -2,16 +2,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
     <xs:include schemaLocation="Bannerlord-Schemas-BodyPropertyTypes.xsd" />
-    
-    <xs:simpleType name="HeroType">
-        <xs:union memberTypes="xs:string">
-            <xs:simpleType>
-                <xs:restriction base="xs:string">
-                    <xs:enumeration value="Hero." />
-                </xs:restriction>
-            </xs:simpleType>
-        </xs:union>
-    </xs:simpleType>
+    <xs:include schemaLocation="Bannerlord-Schemas-ObjectTypes.xsd" />
     
     <xs:element name="Heroes">
         <xs:complexType>
@@ -20,22 +11,12 @@
                     <xs:complexType>
                         <xs:attribute name="id" type="xs:string" />
                         <xs:attribute name="alive" type="xs:boolean" />
-                        <xs:attribute name="faction">
-                            <xs:simpleType>
-                                <xs:union memberTypes="xs:string">
-                                    <xs:simpleType>
-                                        <xs:restriction base="xs:string">
-                                            <xs:enumeration value="Faction." />
-                                        </xs:restriction>
-                                    </xs:simpleType>
-                                </xs:union>
-                            </xs:simpleType>
-                        </xs:attribute>
+                        <xs:attribute name="faction" type="FactionObjectType" />
                         <xs:attribute name="text" type="xs:string" />
                         <xs:attribute name="preferred_upgrade_formation" type="xs:string" />
-                        <xs:attribute name="father" type="HeroType" />
-                        <xs:attribute name="mother" type="HeroType" />
-                        <xs:attribute name="spouse" type="HeroType" />
+                        <xs:attribute name="father" type="HeroObjectType" />
+                        <xs:attribute name="mother" type="HeroObjectType" />
+                        <xs:attribute name="spouse" type="HeroObjectType" />
                     </xs:complexType>
                 </xs:element>
             </xs:choice>
